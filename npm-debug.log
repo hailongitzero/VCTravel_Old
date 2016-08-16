@@ -1,0 +1,137 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'E:\\nodejs\\node.exe',
+1 verbose cli   'E:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 verbose readDependencies loading dependencies from D:\workspace\freelancing\VCTravel\package.json
+5 verbose install where, deps [ 'D:\\workspace\\freelancing\\VCTravel',
+5 verbose install   [ 'gulp', 'laravel-elixir', 'bootstrap-sass' ] ]
+6 verbose install where, peers [ 'D:\\workspace\\freelancing\\VCTravel', [] ]
+7 verbose installManyTop reading for lifecycle D:\workspace\freelancing\VCTravel\package.json
+8 info preinstall @
+9 verbose readDependencies loading dependencies from D:\workspace\freelancing\VCTravel\package.json
+10 silly cache add args [ 'gulp@^3.9.1', null ]
+11 verbose cache add spec gulp@^3.9.1
+12 silly cache add args [ 'laravel-elixir@^5.0.0', null ]
+13 verbose cache add spec laravel-elixir@^5.0.0
+14 silly cache add parsed spec Result {
+14 silly cache add   raw: 'gulp@^3.9.1',
+14 silly cache add   scope: null,
+14 silly cache add   name: 'gulp',
+14 silly cache add   rawSpec: '^3.9.1',
+14 silly cache add   spec: '>=3.9.1 <4.0.0',
+14 silly cache add   type: 'range' }
+15 silly addNamed gulp@>=3.9.1 <4.0.0
+16 verbose addNamed ">=3.9.1 <4.0.0" is a valid semver range for gulp
+17 silly addNameRange { name: 'gulp', range: '>=3.9.1 <4.0.0', hasData: false }
+18 silly mapToRegistry name gulp
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry data Result {
+21 silly mapToRegistry   raw: 'gulp',
+21 silly mapToRegistry   scope: null,
+21 silly mapToRegistry   name: 'gulp',
+21 silly mapToRegistry   rawSpec: '',
+21 silly mapToRegistry   spec: 'latest',
+21 silly mapToRegistry   type: 'tag' }
+22 silly mapToRegistry uri https://registry.npmjs.org/gulp
+23 verbose addNameRange registry:https://registry.npmjs.org/gulp not in flight; fetching
+24 silly cache add parsed spec Result {
+24 silly cache add   raw: 'laravel-elixir@^5.0.0',
+24 silly cache add   scope: null,
+24 silly cache add   name: 'laravel-elixir',
+24 silly cache add   rawSpec: '^5.0.0',
+24 silly cache add   spec: '>=5.0.0 <6.0.0',
+24 silly cache add   type: 'range' }
+25 silly addNamed laravel-elixir@>=5.0.0 <6.0.0
+26 verbose addNamed ">=5.0.0 <6.0.0" is a valid semver range for laravel-elixir
+27 silly addNameRange { name: 'laravel-elixir',
+27 silly addNameRange   range: '>=5.0.0 <6.0.0',
+27 silly addNameRange   hasData: false }
+28 silly mapToRegistry name laravel-elixir
+29 silly mapToRegistry using default registry
+30 silly mapToRegistry registry https://registry.npmjs.org/
+31 silly mapToRegistry data Result {
+31 silly mapToRegistry   raw: 'laravel-elixir',
+31 silly mapToRegistry   scope: null,
+31 silly mapToRegistry   name: 'laravel-elixir',
+31 silly mapToRegistry   rawSpec: '',
+31 silly mapToRegistry   spec: 'latest',
+31 silly mapToRegistry   type: 'tag' }
+32 silly mapToRegistry uri https://registry.npmjs.org/laravel-elixir
+33 verbose addNameRange registry:https://registry.npmjs.org/laravel-elixir not in flight; fetching
+34 silly cache add args [ 'bootstrap-sass@^3.0.0', null ]
+35 verbose cache add spec bootstrap-sass@^3.0.0
+36 silly cache add parsed spec Result {
+36 silly cache add   raw: 'bootstrap-sass@^3.0.0',
+36 silly cache add   scope: null,
+36 silly cache add   name: 'bootstrap-sass',
+36 silly cache add   rawSpec: '^3.0.0',
+36 silly cache add   spec: '>=3.0.0 <4.0.0',
+36 silly cache add   type: 'range' }
+37 silly addNamed bootstrap-sass@>=3.0.0 <4.0.0
+38 verbose addNamed ">=3.0.0 <4.0.0" is a valid semver range for bootstrap-sass
+39 silly addNameRange { name: 'bootstrap-sass',
+39 silly addNameRange   range: '>=3.0.0 <4.0.0',
+39 silly addNameRange   hasData: false }
+40 silly mapToRegistry name bootstrap-sass
+41 silly mapToRegistry using default registry
+42 silly mapToRegistry registry https://registry.npmjs.org/
+43 silly mapToRegistry data Result {
+43 silly mapToRegistry   raw: 'bootstrap-sass',
+43 silly mapToRegistry   scope: null,
+43 silly mapToRegistry   name: 'bootstrap-sass',
+43 silly mapToRegistry   rawSpec: '',
+43 silly mapToRegistry   spec: 'latest',
+43 silly mapToRegistry   type: 'tag' }
+44 silly mapToRegistry uri https://registry.npmjs.org/bootstrap-sass
+45 verbose addNameRange registry:https://registry.npmjs.org/bootstrap-sass not in flight; fetching
+46 verbose request uri https://registry.npmjs.org/gulp
+47 verbose request no auth needed
+48 info attempt registry request try #1 at 9:50:59 AM
+49 verbose request id 894d45f6026bb66a
+50 http request GET https://registry.npmjs.org/gulp
+51 verbose request uri https://registry.npmjs.org/laravel-elixir
+52 verbose request no auth needed
+53 info attempt registry request try #1 at 9:50:59 AM
+54 http request GET https://registry.npmjs.org/laravel-elixir
+55 verbose request uri https://registry.npmjs.org/bootstrap-sass
+56 verbose request no auth needed
+57 info attempt registry request try #1 at 9:50:59 AM
+58 http request GET https://registry.npmjs.org/bootstrap-sass
+59 info retry will retry, error on last attempt: Error: unable to verify the first certificate
+60 info retry will retry, error on last attempt: Error: unable to verify the first certificate
+61 info retry will retry, error on last attempt: Error: unable to verify the first certificate
+62 info attempt registry request try #2 at 9:51:10 AM
+63 http request GET https://registry.npmjs.org/bootstrap-sass
+64 info attempt registry request try #2 at 9:51:10 AM
+65 http request GET https://registry.npmjs.org/laravel-elixir
+66 info attempt registry request try #2 at 9:51:10 AM
+67 http request GET https://registry.npmjs.org/gulp
+68 info retry will retry, error on last attempt: Error: unable to verify the first certificate
+69 info retry will retry, error on last attempt: Error: unable to verify the first certificate
+70 info retry will retry, error on last attempt: Error: unable to verify the first certificate
+71 info attempt registry request try #3 at 9:52:12 AM
+72 http request GET https://registry.npmjs.org/laravel-elixir
+73 info attempt registry request try #3 at 9:52:12 AM
+74 http request GET https://registry.npmjs.org/bootstrap-sass
+75 info attempt registry request try #3 at 9:52:12 AM
+76 http request GET https://registry.npmjs.org/gulp
+77 verbose stack Error: unable to verify the first certificate
+77 verbose stack     at Error (native)
+77 verbose stack     at TLSSocket.<anonymous> (_tls_wrap.js:1017:38)
+77 verbose stack     at emitNone (events.js:67:13)
+77 verbose stack     at TLSSocket.emit (events.js:166:7)
+77 verbose stack     at TLSSocket._init.ssl.onclienthello.ssl.oncertcb.TLSSocket._finishInit (_tls_wrap.js:582:8)
+77 verbose stack     at TLSWrap.ssl.onclienthello.ssl.oncertcb.ssl.onnewsession.ssl.onhandshakedone (_tls_wrap.js:424:38)
+78 verbose cwd D:\workspace\freelancing\VCTravel
+79 error Windows_NT 6.1.7601
+80 error argv "E:\\nodejs\\node.exe" "E:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+81 error node v4.4.7
+82 error npm  v2.15.8
+83 error code UNABLE_TO_VERIFY_LEAF_SIGNATURE
+84 error unable to verify the first certificate
+85 error If you need help, you may report this error at:
+85 error     <https://github.com/npm/npm/issues>
+86 verbose exit [ 1, true ]

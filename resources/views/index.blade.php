@@ -1,51 +1,28 @@
-
 <!--extends master template-->
 @extends('layouts.master')
-    <!--setting page title-->
-    @section('title')
-        @if(isset($title))
-            {{$title}}
-        @else
-            no title
-        @endif
-    @endsection
+<!--end extends master template-->
 
-    <!--start setting page description-->
-    @section('description')
-        @if(isset($description))
-            {{$description}}
-        @else
-            no description
-        @endif
-    @endsection
-    <!--setting author-->
-    @section('author', 'HaiLong')
+<!--title site setting-->
+@section('title', isset($title) ? $title : 'Vung Chua Travel')
+<!--end title site setting-->
 
-<!--page content-->
-@section('content')
-    <!--start slide-->
-    @include('components.slider')
-    <!--end slide-->
+@section('meta-title', isset($metaTitle) ? $metaTitle : 'Vung Chua Travel Title')
+<!--end title site setting-->
 
-    <!--home service layouts-->
-    @include('components.homeServices')
-    <div class="divider"><span></span></div>
+<!--description site setting-->
+@section('description', isset($description) ? $description : 'Vung Chua Travel Descriptions')
+<!--end description site setting-->
 
-    <!--promotion layouts-->
-    @include('components.promotion')
-    <div class="divider"><span></span></div>
+<!--keywords site setting-->
+@section('keywords', isset($keywords) ? $keywords : 'Vung Chua Travel keywords')
+<!--end keywords site setting-->
 
-    <!--destination layouts-->
-    @include('components.destination')
-    <div class="divider"><span></span></div>
+<!--author site setting-->
+@section('author', isset($author) ? $author : 'Hai Long')
+<!--end author site setting-->
 
-    <!--destination layouts-->
-    @include('components.homeTours')
-    <div class="divider"><span></span></div>
-
-            @include('components.tourDetailMix')
-    <!--clients layouts-->
-    @include('components.clients')
-    <div class="divider"><span></span></div>
+<!--content site section-->
+@section('page-content')
+    @include('components.slide.slider')
 @endsection
-
+<!--end content site section-->

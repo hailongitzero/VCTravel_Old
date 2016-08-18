@@ -4,7 +4,9 @@
  * User: HaiLong
  * Date: 8/16/2016
  * Time: 3:21 PM
- */?>
+ */
+$maxMenuLevel = $menuLevel->MN_LVL;
+?>
 <header>
     <!-- site top panel-->
     <div class="site-top-panel">
@@ -20,11 +22,11 @@
                 </div>
                 <div class="col-md-6 col-sm-5 text-right">
                     <div class="top-right-wrap">
-                        <div class="top-login"><a href="index.html#">My Account</a></div>
+                        <div class="top-login"><a href="index.html#">{{trans('header.myAccount')}}</a></div>
                         <div class="curr-wrap dropdown">
                             <div>
                                 <ul>
-                                    <li><a href="index.html#" class="lang-sel icl-en">Currency<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="index.html#" class="lang-sel icl-en">{{trans('header.currency')}}<i class="fa fa-angle-down"></i></a>
                                         <ul>
                                             <li><a href="index.html#">USD</a></li>
                                             <li><a href="index.html#">EUR</a></li>
@@ -38,7 +40,7 @@
                         <div class="lang-wrap dropdown">
                             <div>
                                 <ul>
-                                    <li><a href="index.html#" class="lang-sel icl-en">Language <i class="fa fa-angle-down"></i></a>
+                                    <li><a href="index.html#" class="lang-sel icl-en">{{trans('header.language')}} <i class="fa fa-angle-down"></i></a>
                                         <ul>
                                             <li><a href="index.html#">English</a></li>
                                             <li> <a href="index.html#">Deutsch</a></li>
@@ -63,6 +65,36 @@
             <div class="inner-nav desktop-nav">
                 <ul class="clearlist">
                     <!-- Item With Sub-->
+                    @if(isset($menuData))
+                        @foreach($menuData as $mnData)
+                            @if($mnData->MN_LVL == 0)
+                                <?php $hasChild = fasle; ?>
+                                @foreach ($menuData as $mnChildData)
+                                    @if($mnData->MN_ID == $mnChildData->MN_PRT_ID)
+                                        <?php $hasChild = true; ?>
+                                        @break
+                                    @endif
+                                @endforeach
+                                @if($mnData->MN_DSP_TP = 'L')
+                                    <li class="megamenu">
+                                        @if($hasChild == true)
+                                            <a href="index.html" class="mn-has-sub active">Home <i class="fa fa-angle-down button_open"></i></a>
+                                        @else
+                                            <a href="{{ $mnData->MN_NM_LINK }}">{{$mnData->MN_NM_VI }} </a>
+                                        @endif
+                                    </li>
+                                @else
+                                    <li>
+                                        @if($hasChild == true)
+                                            <a href="index.html" class="mn-has-sub active">Home <i class="fa fa-angle-down button_open"></i></a>
+                                        @else
+                                            <a href="{{ $mnData->MN_NM_LINK }}">{{$mnData->MN_NM_VI }} </a>
+                                        @endif
+                                    </li>
+                                @endif
+                            @endif
+                        @endforeach
+                    @endif
                     <li><a href="index.html" class="mn-has-sub active">Home <i class="fa fa-angle-down button_open"></i></a>
                         <ul class="mn-sub">
                             <li class="active"><a href="index.html">Standart Slider</a></li>

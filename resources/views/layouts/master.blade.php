@@ -45,12 +45,10 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-
-
 </head>
 <body>
 <!-- header page-->
-@include('components.header')
+@include('components.header', $headerData)
 <!-- ! header page-->
 <div class="content-body">
     <!-- ! page content section-->

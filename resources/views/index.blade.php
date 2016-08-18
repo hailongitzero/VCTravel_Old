@@ -1,5 +1,5 @@
 <!--extends master template-->
-@extends('layouts.master')
+@extends('layouts.master', array("header" => $headerData))
 <!--end extends master template-->
 
 <!--title site setting-->

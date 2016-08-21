@@ -23,6 +23,10 @@
 
 <!--content site section-->
 @section('page-content')
-    @include('components.slide.slider')
+    @include('components.slide.slider', $sliderData)
+    @include('components.tourCategory')
+    @include('components.travelGuide')
+    @include('components.recomended')
+    @include('components.callOut')
 @endsection
 <!--end content site section-->

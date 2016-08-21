@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h6 class="title-section-top font-4">Top rated</h6>
-                <h2 class="title-section"><span>Recomended</span> Hotels</h2>
+                <h2 class="title-section"><span>Recomended</span> Tours</h2>
                 <div class="cws_divider mb-25 mt-5"></div>
                 <p>Maecenas commodo odio ut vulputate cursus. Integer in egestas lectus. Nam volutpat feugiat mi vitae mollis. Aenean tristique dolor bibendum mi scelerisque ultrices non at lorem.</p>
             </div>

@@ -11,18 +11,18 @@ use Illuminate\Support\Facades\App;
 class IndexController extends Controller
 {
     public function index(){
-        $local = App::getLocale();
+        $localCode = strtoupper(App::getLocale());
 
         /* Load Model */
-        $mnModel = new Models\MenuMode();
+        $headerModel = new Models\HeaderMode();
         $sldMode = new Models\SliderMode();
 
-        $headerData = $mnModel->getMainMenu('MG01');
-        $sldData = $sldMode->getSliderData();
+        $headerData = $headerModel->getHeader($localCode);
+        $sliderData = $sldMode->getSliderData($localCode);
 
         $indexData = array(
             "headerData" => $headerData,
-            "sldData" => $sldData,
+            "sliderData" => $sliderData,
         );
 
         return view('index', $indexData);

@@ -92,8 +92,8 @@
 {{--<script type="text/javascript" src="/resources/assets/js/jquery.tweet.js"></script>--}}
 <script type="text/javascript" src="/resources/assets/js/jquery.scrollTo.min.js"></script>
 <script type="text/javascript" src="/resources/assets/js/jquery.flexslider.js"></script>
-<script type="text/javascript" src="/resources/assets/tuner/js/colorpicker.js"></script>
-<script type="text/javascript" src="/resources/assets/tuner/js/scripts.js"></script>
+{{--<script type="text/javascript" src="/resources/assets/tuner/js/colorpicker.js"></script>--}}
+{{--<script type="text/javascript" src="/resources/assets/tuner/js/scripts.js"></script>--}}
 <script type="text/javascript" src="/resources/assets/js/retina.min.js"></script>
 </body>
 </html>

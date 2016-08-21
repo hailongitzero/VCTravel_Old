@@ -3,7 +3,7 @@
 	z-index: 1000;
 	top: 170px;
 	left: 0;
-	border: 2px solid #ffc107;
+	border: 2px solid #8bcf17;
 	border-left: 0;
 	width: 158px;
 	box-sizing: border-box;
@@ -31,7 +31,7 @@
 	left: 100%;
 	width: 44px;
 	height: 44px;
-	background: #ffc107;
+	background: #8bcf17;
 	font-size: 25px;
 	line-height: 44px;
 	text-align: center;
@@ -214,8 +214,8 @@
 }
 .tuner .page-style.active,
 .tuner .page-style.active.boxed:before{
-	border-color: #ffc107;
-	color: #ffc107;
+	border-color: #8bcf17;
+	color: #8bcf17;
 }
 body.boxed {
 	max-width: 1250px;

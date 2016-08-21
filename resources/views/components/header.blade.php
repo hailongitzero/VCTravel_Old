@@ -5,7 +5,6 @@
  * Date: 8/16/2016
  * Time: 3:21 PM
  */
-$maxMenuLevel = $menuLevel->MN_LVL;
 ?>
 <header>
     <!-- site top panel-->
@@ -68,114 +67,44 @@ $maxMenuLevel = $menuLevel->MN_LVL;
                     @if(isset($menuData))
                         @foreach($menuData as $mnData)
                             @if($mnData->MN_LVL == 0)
-                                <?php $hasChild = fasle; ?>
-                                @foreach ($menuData as $mnChildData)
-                                    @if($mnData->MN_ID == $mnChildData->MN_PRT_ID)
-                                        <?php $hasChild = true; ?>
-                                        @break
-                                    @endif
-                                @endforeach
-                                @if($mnData->MN_DSP_TP = 'L')
+                                @if($mnData->MN_DSP_TP == 'G')
                                     <li class="megamenu">
-                                        @if($hasChild == true)
-                                            <a href="index.html" class="mn-has-sub active">Home <i class="fa fa-angle-down button_open"></i></a>
-                                        @else
-                                            <a href="{{ $mnData->MN_NM_LINK }}">{{$mnData->MN_NM_VI }} </a>
-                                        @endif
+                                        <a href="{{ $mnData->MN_NM_LINK }}" class="mn-has-sub active">{{$mnData->MN_NM }} <i class="fa fa-angle-down button_open"></i></a>
+                                        <ul class="mn-sub mn-has-multi">
+                                            @foreach($menuData as $mnFirstChild)
+                                                @if($mnFirstChild->MN_LVL == 1 && $mnFirstChild->MN_PRT_ID == $mnData->MN_ID)
+                                                    <li class="mn-sub-multi"><a class="mn-group-title">{{$mnFirstChild->MN_NM}}</a>
+                                                        <ul>
+                                                            @foreach($menuData as $mnSecondChild)
+                                                                @if($mnSecondChild->MN_LVL == 2 && $mnSecondChild->MN_PRT_ID == $mnFirstChild->MN_ID)
+                                                                    <li><a href="page-about-us.html">{{$mnSecondChild->MN_NM}}</a></li>
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
                                     </li>
                                 @else
                                     <li>
-                                        @if($hasChild == true)
-                                            <a href="index.html" class="mn-has-sub active">Home <i class="fa fa-angle-down button_open"></i></a>
-                                        @else
-                                            <a href="{{ $mnData->MN_NM_LINK }}">{{$mnData->MN_NM_VI }} </a>
-                                        @endif
+                                        <a href="{{ $mnData->MN_NM_LINK }}" class="mn-has-sub active">{{$mnData->MN_NM }} <i class="fa fa-angle-down button_open"></i></a>
+                                        <ul class="mn-sub">
+                                            @foreach($menuData as $mnFirstChild)
+                                                @if($mnFirstChild->MN_LVL == 1 && $mnFirstChild->MN_PRT_ID == $mnData->MN_ID)
+                                                    <li><a href="{{$mnFirstChild->MN_NM_LINK}}">{{$mnFirstChild->MN_NM}}</a></li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
                                     </li>
+                                @endif
+                                @if($mnData->MN_SEQ < $menuInitData['mnMaxSeq'])
+                                    <li class="slash">/</li>
                                 @endif
                             @endif
                         @endforeach
                     @endif
-                    <li><a href="index.html" class="mn-has-sub active">Home <i class="fa fa-angle-down button_open"></i></a>
-                        <ul class="mn-sub">
-                            <li class="active"><a href="index.html">Standart Slider</a></li>
-                            <li><a href="index-search.html">Main Search</a></li>
-                            <li><a href="index-slider.html">Full Slider</a></li>
-                            <li><a href="index-video.html">Video Slider</a></li>
-                        </ul>
-                    </li>
-                    <!-- End Item With Sub-->
-                    <li class="slash">/</li>
-                    <!-- Item With Sub-->
-                    <li><a href="hotels-search.html" class="mn-has-sub">Hotels <i class="fa fa-angle-down button_open"></i></a>
-                        <!-- Sub-->
-                        <ul class="mn-sub">
-                            <li><a href="hotels-list.html">Hotels list</a></li>
-                            <li><a href="hotels-search.html">Hotels search</a></li>
-                            <li><a href="hotels-details.html">Hotels details</a></li>
-                        </ul>
-                        <!-- End Sub-->
-                    </li>
-                    <!-- End Item With Sub-->
-                    <li class="slash">/</li>
-                    <!-- Item With Sub-->
-                    <li class="megamenu"><a href="page-about-us.html" class="mn-has-sub">Pages <i class="fa fa-angle-down button_open"></i></a>
-                        <!-- Sub-->
-                        <ul class="mn-sub mn-has-multi">
-                            <li class="mn-sub-multi"><a class="mn-group-title">Pages</a>
-                                <ul>
-                                    <li><a href="page-about-us.html">About Us</a></li>
-                                    <li><a href="page-services.html">Services</a></li>
-                                    <li><a href="page-procces.html">Our Procces</a></li>
-                                    <li><a href="page-our-team.html">Our Team</a></li>
-                                    <li><a href="page-profile.html">Profile</a></li>
-                                    <li><a href="page-elements.html">Elements</a></li>
-                                </ul>
-                            </li>
-                            <li class="mn-sub-multi"><a class="mn-group-title">Portfolio</a>
-                                <ul>
-                                    <li><a href="portfolio-3-col.html">Three Columns</a></li>
-                                    <li><a href="portfolio-4-col.html">Four Columns</a></li>
-                                    <li><a href="portfolio-masonry.html">Portfolio Masonry</a></li>
-                                    <li><a href="portfolio-with-sidebar.html">With Sidebar</a></li>
-                                    <li><a href="portfolio-gallery.html">Gallery</a></li>
-                                    <li><a href="page-portfolio-single.html">Portfolio Single</a></li>
-                                </ul>
-                            </li>
-                            <li class="mn-sub-multi"><a class="mn-group-title">Blog</a>
-                                <ul>
-                                    <li><a href="blog-2-col-sidebar.html">Two Columns + Sidebar</a></li>
-                                    <li><a href="blog-3-col.html">Three Columns</a></li>
-                                    <li><a href="blog-4-col.html">Four Columns</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
-                                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                                    <li><a href="blog-list.html">Blog List</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <!-- End Sub-->
-                    </li>
-                    <!-- End Item With Sub-->
-                    <!-- span /-->
-                    <!-- Item With Sub-->
-                    <!-- End Item With Sub-->
-                    <li class="slash">/</li>
-                    <!-- Item With Sub-->
-                    <li><a href="shop-grid.html" class="mn-has-sub">Shop <i class="fa fa-angle-down button_open"></i></a>
-                        <!-- Sub-->
-                        <ul class="mn-sub">
-                            <li><a href="shop-grid.html">Shop Grid</a></li>
-                            <li><a href="shop-cart.html">Shop Cart</a></li>
-                            <li><a href="shop-checkout.html">Shop Checkout</a></li>
-                            <li><a href="shop-single.html">Shop Single Product</a></li>
-                        </ul>
-                        <!-- End Sub-->
-                    </li>
-                    <!-- End Item With Sub-->
-                    <li class="slash">/</li>
-                    <!-- Item-->
-                    <li><a href="page-contact.html">Contact</a></li>
-                    <!-- End Item-->
-                    <!-- Search-->
+                    {{--<!-- Search-->--}}
                     <li class="search"><a href="index.html#" class="mn-has-sub">Search</a>
                         <ul class="search-sub">
                             <li>

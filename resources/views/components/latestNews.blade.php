@@ -6,16 +6,16 @@
  * Time: 3:53 PM
  */?>
 <!-- latest news-->
-<section class="small-section cws_prlx_section bg-blue-40"><img src="/resources/assets/pic/parallax-3.jpg" alt class="cws_prlx_layer">
+<section class="small-section cws_prlx_section bg-blue-40"><img src="/resources/assets/img/World-Travel-Background.jpg" alt class="cws_prlx_layer">
     <div class="container">
-        <div class="row mb-50">
-            <div class="col-md-8">
-                <h6 class="title-section-top font-4">Latest News</h6>
-                <h2 class="title-section alt-2"><span>Our</span> Blog</h2>
+        <div class="row mb-50 align-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h6 class="title-section-top font-2">Latest News</h6>
+                <h2 class="title-section alt-2"><span>Vung Chua Travel</span> News Magazine</h2>
                 <div class="cws_divider mb-25 mt-5"></div>
                 <p class="color-white">Vestibulum feugiat vitae tortor ut venenatis. Sed cursus, purus eu euismod bibendum, diam nisl suscipit odio, vitae ultrices mauris dolor quis mauris. Curabitur ac metus id leo maxim.</p>
             </div>
-            <div class="col-md-4"><i class="flaticon-suntour-calendar title-icon alt"></i></div>
+            {{--<div class="col-md-4"><i class="flaticon-suntour-calendar title-icon alt"></i></div>--}}
         </div>
         <div class="carousel-container">
             <div class="row">
@@ -31,7 +31,8 @@
                                 <h6 class="blog-title">Sed semper lacus et enim sodales</h6></a>
                             <div class="blog-item-data">Mon, 03-23-2016</div>
                             <!-- Text Intro-->
-                            <p>Etiam maximus molestie accumsan. Sed metus sapien, fermentum nec lorem ac, tempor gravida arcu.</p><a href="blog-single.html" class="blog-button">Read more</a>
+                            <p>Etiam maximus molestie accumsan. Sed metus sapien, fermentum nec lorem ac, tempor gravida arcu.
+                                Etiam maximus molestie accumsan. Sed metus sapien, fermentum nec lorem ac, tempor gravida arcu.</p><a href="blog-single.html" class="blog-button">Read more</a>
                         </div>
                     </div>
                     <!-- ! Blog item-->

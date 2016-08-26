@@ -9,13 +9,13 @@ use DB;
  * Date: 8/18/2016
  * Time: 11:21 AM
  */
-class HeaderMode
+class HeaderModel
 {
     /**
      * @param $menuID
      * @return return all main menu data
      */
-    public function getHeader($localCode){
+    public function index($localCode){
         $menuID = 'MG01';
         $headerData = array(
             "menuInitData" => $this->getMenuInitData($menuID, $localCode),

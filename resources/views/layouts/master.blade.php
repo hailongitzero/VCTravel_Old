@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="/resources/assets/rs-plugin/css/navigation.css">
     <link rel="stylesheet" href="/resources/assets/tuner/css/colorpicker.css">
     <link rel="stylesheet" href="/resources/assets/tuner/css/styles.css">
+    <link rel="stylesheet" href="/resources/assets/css/site.css">
     <!--END CSS-->
 
 

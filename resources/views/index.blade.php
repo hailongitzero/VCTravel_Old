@@ -24,9 +24,10 @@
 <!--content site section-->
 @section('page-content')
     @include('components.slide.slider', $sliderData)
-    @include('components.tourCategory')
+    @include('components.latestNews')
+    @include('components.tourCategory', $cateData)
+    @include('components.recommended', $tourRcm)
     @include('components.travelGuide')
-    @include('components.recomended')
     @include('components.callOut')
 @endsection
 <!--end content site section-->

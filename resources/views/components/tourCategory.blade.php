@@ -21,102 +21,25 @@
     </div>
     <div class="features-tours-full-width">
         <div class="features-tours-wrap clearfix">
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/1.jpg" data-at2x="/resources/assets/pic/tours/1@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>Total</span> 80 tours</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 30° / 86°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
+            @if(isset($rpvCate))
+                @foreach($rpvCate as $cate)
+                    <div class="features-tours-item">
+                        <div class="features-media"><img src="{{$cate->IMG_TP =='R' ? $cate->IMG_URL : url('/').$cate->IMG_URL}}" data-at2x="{{$cate->IMG_TP =='R' ? substr($cate->IMG_URL, 0, -4).'@2x'.substr($cate->IMG_URL, -4, 4) : substr(url('/').$cate->IMG_URL, 0, -4).'@2x'.substr(url('/').$cate->IMG_URL, -4, 4)}}" alt>
+                            <div class="features-info-top">
+                                <div class="info-price font-4"><span>Total</span> {{$cate->TOT_POST}} tours</div>
+                                {{--<div class="info-temp font-4"><span>local temperature</span> 30° / 86°</div>--}}
+                                <p class="info-text">{{$cate->POST_INTRO}}</p>
+                            </div>
+                            <div class="features-info-bot">
+                                <h4 class="title">
+                                    {{--<span class="font-4">{{$cate->POST_NM}}</span> --}}{{$cate->POST_NM}}
+                                </h4>
+                                <a href="hotels-details.html" class="button">Details</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">United arab emirates</span> Dubai</h4><a href="hotels-details.html" class="button">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/2.jpg" data-at2x="/resources/assets/pic/tours/2@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>start per night</span> $100</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 23° / 73.4°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
-                    </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">United kingdom</span> London</h4><a href="hotels-details.html" class="button">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/3.jpg" data-at2x="/resources/assets/pic/tours/3@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>start per night</span> $120</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 34° / 93.2°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
-                    </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">Australia ans oceania</span> Sydney</h4><a href="hotels-details.html" class="button">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/4.jpg" data-at2x="/resources/assets/pic/tours/4@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>start per night</span> $105</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 39° / 102.2°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
-                    </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">Brazil</span> Rio de janeiro</h4><a href="hotels-details.html" class="button">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/5.jpg" data-at2x="/resources/assets/pic/tours/5@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>start per night</span> $110</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 35° / 95°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
-                    </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">Maldives</span> Male</h4><a href="hotels-details.html" class="button">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/6.jpg" data-at2x="/resources/assets/pic/tours/6@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>start per night</span> $85</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 30° / 86°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
-                    </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">Turkey</span> Istanbul</h4><a href="hotels-details.html" class="button">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/7.jpg" data-at2x="/resources/assets/pic/tours/7@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>start per night</span> $75</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 25° / 77°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
-                    </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">Austria</span> Vienna</h4><a href="hotels-details.html" class="button">Details	</a>
-                    </div>
-                </div>
-            </div>
-            <div class="features-tours-item">
-                <div class="features-media"><img src="/resources/assets/pic/tours/8.jpg" data-at2x="/resources/assets/pic/tours/8@2x.jpg" alt>
-                    <div class="features-info-top">
-                        <div class="info-price font-4"><span>start per night</span> $115</div>
-                        <div class="info-temp font-4"><span>local temperature</span> 22° / 71.6°</div>
-                        <p class="info-text">Etiam malesuada lectus tempor, ultricies lectus in, convallis massa.</p>
-                    </div>
-                    <div class="features-info-bot">
-                        <h4 class="title"><span class="font-4">Italy</span> Venice</h4><a href="hotels-details.html" class="button">Details		</a>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>

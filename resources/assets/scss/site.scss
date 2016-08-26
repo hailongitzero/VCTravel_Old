@@ -1,0 +1,172 @@
+/**
+Override main.css style
+*/
+/* define body font */
+body{
+  font-family: 'Roboto', Open Sans;
+  line-height: 1.2;
+}
+.slider-info-wrap{
+  .slider-info-content{
+    .slider-info-item{
+      .info-item-media{
+        img{
+          min-height: 240px;
+        }
+      }
+    }
+  }
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: 500;
+  span{
+    font-weight: 500;
+  }
+}
+
+.page-section{
+  padding: 100px 0;
+}
+.small-section{
+  padding: 50px 0;
+}
+
+.inner-nav{
+  font-family: 'Roboto', Open Sans;
+  ul{
+    li>a{
+      font-family: 'Roboto', Open Sans;
+      font-weight: 500;
+    }
+  }
+  &.desktop-nav{
+    ul{
+      font-weight: 500!important;
+      li{
+        .mn-sub{
+          li>a{
+            font-weight: 500!important;
+          }
+          &.mn-has-multi{
+            a.mn-group-title{
+                font-size: 16px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.slider-info-wrap{
+  .slider-info-content{
+    .slider-info-item{
+      .info-item-content{
+        .main-title{
+          .price{
+            margin-top: 13px;
+            line-height: 18px;
+            text-align: right;
+            span{
+              display: block;
+            }
+          }
+          .button{
+            font-weight: 500;
+          }
+        }
+      }
+      .info-item-media{
+        .info-item-text{
+          .info-price{
+            font-size: 18px;
+          }
+          .info-temp{
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-tours-full-width {
+  .features-tours-wrap{
+    .features-tours-item{
+      :hover{
+
+      }
+      .features-media{
+        .features-info-bot{
+          .button{
+            font-weight: 500;
+          }
+        }
+        .features-info-top{
+          top: 10px;
+        }
+      }
+    }
+  }
+}
+.recom-item-body-fix{
+  padding: 20px 0 0 20px !important;
+  .action{
+    right: -105px !important;
+  }
+}
+.cws-button-fix{
+  width: 100%;
+  font-weight: 500;
+}
+
+.recom-item{
+  .recom-media{
+    max-height: 240px;
+  }
+  .recom-item-body{
+    .action{
+      font-weight: 500;
+    }
+  }
+}
+
+.testimonial-item{
+  .testimonial-body{
+    .title{
+      span{
+        font-weight: 500;
+      }
+    }
+    .testimonial-button{
+      font-weight: 500;
+    }
+  }
+}
+
+.owl-item {
+  max-height: 270px;
+  .blog-item {
+    .blog-item-body {
+      padding: 20px 20px 0 20px;
+      overflow: hidden;
+      .blog-button {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+footer.footer{
+  .widget-tags-wrap{
+    .tag{
+      font-weight: 500;
+    }
+  }
+  .copyright{
+    a{
+      font-weight: 500;
+    }
+  }
+}

@@ -20,6 +20,7 @@
     <meta name="description" content="@yield('description')"> <!--insert your description here-->
     <meta name="keywords" content="@yield('keywords')"> <!--insert your keywords here-->
     <meta name="author" content="@yield('author')"> <!--insert your name here-->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"> <!--meta responsive-->
 
@@ -37,12 +38,15 @@
     <link rel="stylesheet" href="/resources/assets/rs-plugin/css/layers.css">
     <link rel="stylesheet" href="/resources/assets/rs-plugin/css/navigation.css">
     <link rel="stylesheet" href="/resources/assets/tuner/css/colorpicker.css">
+    <link rel="stylesheet" href="/resources/assets/css/star-rating.css">
+    <link rel="stylesheet" href="/resources/assets/themes/krajee-fa/theme.css">
     <link rel="stylesheet" href="/resources/assets/tuner/css/styles.css">
     <link rel="stylesheet" href="/resources/assets/css/site.css">
     <!--END CSS-->
 
 
     <!--[if lt IE 9]>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
@@ -60,7 +64,6 @@
 @include('components.footer')
 
 @section('extend-component')
-
 <script src="https://www.youtube.com/player_api"></script>
 <script type="text/javascript" src="/resources/assets/js/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="/resources/assets/js/jquery-ui.min.js"></script>
@@ -84,7 +87,7 @@
 <script type="text/javascript" src="/resources/assets/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
 <script type="text/javascript" src="/resources/assets/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
 <script type="text/javascript" src="/resources/assets/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
-<script type="text/javascript" src="/resources/assets/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/resources/assets/js/jquery.validate.js"></script>
 <script type="text/javascript" src="/resources/assets/js/jquery.form.min.js"></script>
 <script type="text/javascript" src="/resources/assets/js/script.js"></script>
 <script type="text/javascript" src="/resources/assets/js/bg-video/cws_self_vimeo_bg.js"></script>
@@ -95,6 +98,17 @@
 <script type="text/javascript" src="/resources/assets/js/jquery.flexslider.js"></script>
 {{--<script type="text/javascript" src="/resources/assets/tuner/js/colorpicker.js"></script>--}}
 {{--<script type="text/javascript" src="/resources/assets/tuner/js/scripts.js"></script>--}}
-<script type="text/javascript" src="/resources/assets/js/retina.min.js"></script>
+{{--<script type="text/javascript" src="/resources/assets/js/retina.min.js"></script>--}}
+<script type="text/javascript" src="/resources/assets/js/star-rating.js"></script>
+<script type="text/javascript" src="/resources/assets/themes/krajee-fa/theme.js"></script>
+<script type="text/javascript" src="/resources/assets/js/site.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

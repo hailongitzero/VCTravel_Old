@@ -32,19 +32,19 @@ class HeaderModel
      */
     public function getMenuInitData($menuID, $localCode){
         $mnLevel = DB::table('tb_menu')
-            ->select(DB::raw('MAX(MN_LVL) AS MN_LVL'))
+            ->select(DB::raw('MAX(MN_LVL) AS mnLvl'))
             ->where('MN_GRP_ID',$menuID)
             ->first();
 
         $mnMaxSeq = DB::table('tb_menu')
-            ->select(DB::raw('MAX(MN_SEQ) AS MN_SEQ'))
+            ->select(DB::raw('MAX(MN_SEQ) AS mnSeq'))
             ->where('MN_GRP_ID',$menuID)
             ->where('MN_PRT_ID',null)
             ->first();
 
         $mnInitInfo = array(
-            "mnLevel" => $mnLevel->MN_LVL,
-            "mnMaxSeq" => $mnMaxSeq->MN_SEQ
+            "mnLevel" => $mnLevel->mnLvl,
+            "mnMaxSeq" => $mnMaxSeq->mnSeq
         );
 
         return $mnInitInfo;
@@ -57,8 +57,17 @@ class HeaderModel
      */
     public function getMenuData($menuID, $localCode){
         return DB::table('tb_menu')
-            ->select('MN_ID','MN_SEQ','MN_GRP_ID','MN_LVL','MN_PRT_ID','MN_NM_'.$localCode.' AS MN_NM','MN_NM_LINK', 'MN_DSP_TP')
             ->where('MN_GRP_ID', $menuID)
+            ->select(
+                'MN_ID AS mnId'
+                , 'MN_SEQ AS mnSeq'
+                , 'MN_GRP_ID AS mnGrpId'
+                , 'MN_LVL AS mnLvl'
+                , 'MN_PRT_ID AS mnPrtId'
+                , 'MN_NM_'.$localCode.' AS mnNm'
+                , 'MN_NM_LINK AS mnLnk'
+                , 'MN_DSP_TP AS mnDspTp'
+            )
             ->orderBy('MN_LVL','ASC')
             ->orderBy('MN_SEQ', 'ASC')
             ->orderBy('MN_PRT_ID', 'ASC')

@@ -31,7 +31,16 @@ class SliderModel
      */
     public function getSliderContent($localeCode){
         return DB::table('tb_slide')
-            ->select('SLD_ID','SLD_SEQ','SLD_TITLE_'.$localeCode.' AS SLD_TITLE','SLD_CONTENT_'.$localeCode.' AS SLD_CONTENT','SLD_IMG_URL','SLD_IMG_ALT', 'SLD_HTML_CODE', 'SLD_LINK')
+            ->select(
+                'SLD_ID AS sldId'
+                , 'SLD_SEQ AS sldSeq'
+                , 'SLD_TITLE_'.$localeCode.' AS sldTit'
+                , 'SLD_CONTENT_'.$localeCode.' AS sldCnt'
+                , 'SLD_IMG_URL AS sldImgUrl'
+                , 'SLD_IMG_ALT AS sldImgAlt'
+                , 'SLD_HTML_CODE AS sldHtmlCd'
+                , 'SLD_LINK AS sldLnk'
+            )
             ->orderBy('SLD_SEQ', 'ASC')
             ->get();
     }
@@ -44,26 +53,26 @@ class SliderModel
 
         $result = DB::table('tb_tours')
             ->leftJoin('tb_location', 'tb_tours.LOCATION_ID', '=', 'tb_location.LOCATION_ID')
-            ->leftJoin(DB::raw('tb_img_ref INNER JOIN tb_img_mgmt ON tb_img_ref.IMG_ID = tb_img_mgmt.IMG_ID'), 'tb_tours.TOUR_RPV_IMG_ID', '=', 'tb_img_ref.REF_ID')
+            ->leftJoin('tb_img_mgmt', 'tb_tours.TOUR_RPV_IMG_ID', '=', 'tb_img_mgmt.IMG_ID')
             ->where('tb_tours.TOUR_FTR_YN', '=', 'Y')
             ->where('tb_tours.TOUR_ACT_YN', '=', 'Y')
             ->select(
-                'tb_tours.TOUR_ID'
-                , 'tb_tours.TOUR_TEXT_LINK'
-                , 'tb_tours.TOUR_TIT_'.$localeCode.' AS TOUR_TIT'
-                , 'tb_tours.TOUR_LENGTH_'.$localeCode.' AS TOUR_LENGTH'
-                , DB::raw('FORMAT(tb_tours.TOUR_PRICE_'.$localeCode.', 0) TOUR_PRICE')
-                , DB::raw('IF( \''.$localeCode.'\' = \'VI\', \'VND\', \'USD\' ) AS CURRENCY_UNIT')
-                , 'tb_tours.TOUR_PRM_PRICE'
-                , 'tb_tours.TOUR_RATE_TOT_STAR'
-                , 'tb_tours.TOUR_RATE_TOT_SEQ'
-                , 'tb_tours.TOUR_DESCRIPTION_'.$localeCode.' AS TOUR_DESCRIPTION'
-                , 'tb_tours.TOUR_KEYWORDS_'.$localeCode.' AS TOUR_KEYWORDS'
-                , 'tb_location.NATIONAL_NM_'.$localeCode.' AS NATIONAL_NM'
-                , 'tb_location.PROVINCE_NM_'.$localeCode.' AS PROVINCE_NM'
-                , 'tb_img_mgmt.IMG_URL'
-                , 'tb_img_mgmt.IMG_ALT'
-                , 'tb_img_mgmt.IMG_TP'
+                'tb_tours.TOUR_ID AS tourId'
+                , 'tb_tours.TOUR_TEXT_LINK AS tourTxtLnk'
+                , 'tb_tours.TOUR_TIT_'.$localeCode.' AS tourTit'
+                , 'tb_tours.TOUR_LENGTH_'.$localeCode.' AS tourLgt'
+                , DB::raw('FORMAT(tb_tours.TOUR_PRICE_'.$localeCode.', 0) tourPrc')
+                , DB::raw('IF( \''.$localeCode.'\' = \'VI\', \'VND\', \'USD\' ) AS tourCurrUnt')
+                , 'tb_tours.TOUR_PRM_PRICE AS tourPrmPrc'
+                , 'tb_tours.TOUR_RATE_TOT_STAR AS tourRateStar'
+                , 'tb_tours.TOUR_RATE_TOT_SEQ AS tourRateTotSeq'
+                , 'tb_tours.TOUR_DESCRIPTION_'.$localeCode.' AS TOUR_DESCRIPTION AS tourDesc'
+                , 'tb_tours.TOUR_KEYWORDS_'.$localeCode.' AS TOUR_KEYWORDS AS tourKwd'
+                , 'tb_location.NATIONAL_NM_'.$localeCode.' AS ntnNm'
+                , 'tb_location.PROVINCE_NM_'.$localeCode.' AS prvNm'
+                , 'tb_img_mgmt.IMG_URL AS imgUrl'
+                , 'tb_img_mgmt.IMG_ALT AS imgAlt'
+                , 'tb_img_mgmt.IMG_TP AS imgTp'
             )
             ->orderBy('TOUR_RATE_TOT_STAR', 'DESC')
             ->orderBy('TOUR_RATE_TOT_STAR', 'DESC')

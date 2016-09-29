@@ -20,21 +20,21 @@
         </div>
         <div class="row">
             <!-- Recommended item-->
-            @if(isset($tourRecommended))
-                @foreach($tourRecommended as $tourRcm)
+            @if(isset($mdTourRecommended))
+                @foreach($mdTourRecommended as $tourRcm)
                     <div class="col-md-4">
                         <div class="recom-item">
-                            <div class="recom-media"><a href="hotels-details.html">
-                                    <div class="pic"><img src="{{$tourRcm->IMG_TP =='R' ? $tourRcm->IMG_URL : url('/').$tourRcm->IMG_URL}}" data-at2x="{{$tourRcm->IMG_TP =='R' ? substr($tourRcm->IMG_URL, 0, -4).'@2x'.substr($tourRcm->IMG_URL, -4, 4) : substr(url('/').$tourRcm->IMG_URL, 0, -4).'@2x'.substr(url('/').$tourRcm->IMG_URL, -4, 4)}}" alt></div></a>
-                                <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{$tourRcm->PROVINCE_NM}}, {{$tourRcm->NATIONAL_NM}}</div>
+                            <div class="recom-media"><a href="{{url('tour-detail/'.$tourRcm->tourTxtLnk)}}">
+                                    <div class="pic"><img src="{{$tourRcm->imgTp =='R' ? $tourRcm->imgUrl : url('/').$tourRcm->imgUrl}}" data-at2x="{{$tourRcm->imgTp =='R' ? substr($tourRcm->imgUrl, 0, -4).'@2x'.substr($tourRcm->imgUrl, -4, 4) : substr(url('/').$tourRcm->imgUrl, 0, -4).'@2x'.substr(url('/').$tourRcm->imgUrl, -4, 4)}}" alt="{{$tourRcm->imgAlt}}"></div></a>
+                                <div class="location"><i class="flaticon-suntour-map"></i> {{$tourRcm->prvNm}}, {{$tourRcm->ntnNm}}</div>
                             </div>
                             <!-- Recomended Content-->
-                            <div class="recom-item-body recom-item-body-fix"><a href="hotels-details.html">
-                                    <h6 class="blog-title">{{$tourRcm->TOUR_TIT}}</h6></a>
-                                {{--<div class="stars stars-4"></div>--}}
-                                <div class="recom-price"><span class="font-2">{{$tourRcm->TOUR_PRICE.' '.$tourRcm->CURRENCY_UNIT}}</span><br/> {{$tourRcm->TOUR_LENGTH}}</div>
-                                <p class="mb-30">{{$tourRcm->TOUR_SHT_CNT}}</p><a href="hotels-details.html" class="cws-button cws-button-fix small alt">Book now</a>
-                                <div class="action font-2">{{$tourRcm->TOUR_PRM_PRICE}}%</div>
+                            <div class="recom-item-body"><a href="{{url('tour-detail/'.$tourRcm->tourTxtLnk)}}">
+                                    <h6 class="blog-title">{{$tourRcm->tourTit}}</h6></a>
+                                <div class="stars-perc"><span style="width:{{$tourRcm->tourRate}}%"></span></div>
+                                <div class="recom-price"><span class="font-2">{{$tourRcm->tourPrc.' '.$tourRcm->tourCurrUnt}}</span> {{$tourRcm->tourLgt}}</div>
+                                <p class="recom-content">{{$tourRcm->tourShtCnt}}</p><a href="{{url('tour-detail/'.$tourRcm->tourTxtLnk)}}" class="cws-button small alt">Book now</a>
+                                <div class="action font-2">{{$tourRcm->tourPrmPrc}}%</div>
                             </div>
                             <!-- Recomended Image-->
                         </div>

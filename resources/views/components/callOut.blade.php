@@ -13,16 +13,19 @@
                 <div class="col-md-5">
                     <h6 class="title-section-top gray font-4">subscribe today</h6>
                     <h2 class="title-section alt-2"><span>Get</span> Latest offers</h2>
-                    <i class="fa fa-envelope-o call-out-icon" aria-hidden="true"></i>
+                    <i class="flaticon-suntour-email call-out-icon"></i>
                     {{--<i class="flaticon-suntour-email call-out-icon"></i>--}}
                 </div>
                 <div class="col-md-7">
-                    <form action="php/contacts-process.htm" method="post" class="form contact-form mt-10">
+                    <div class="email_server_response"></div>
+                    <form id="email-sub-form" action="" method="POST" class="contact-form form mt-10">
                         <div class="input-container">
-                            <input type="text" placeholder="Enter your email" value="" name="email" class="newsletter-field mb-0 form-row">
-                            <i class="fa fa-envelope-o icon-left" aria-hidden="true"></i>
-                            <button type="submit" class="subscribe-submit">
-                                <i class="fa fa-arrow-right icon-right" aria-hidden="true"></i>
+                            <input type="text" placeholder="Enter your email" value="" name="email" id="email" class="newsletter-field mb-0 form-row">
+                            {{ csrf_field() }}
+                            <input name="_method" type="hidden" value="GET">
+                            <i class="flaticon-suntour-email icon-left"></i>
+                            <button type="submit" class="subscribe-submit" id="email-submit">
+                                <i class="flaticon-suntour-arrow icon-right"></i>
                             </button>
                         </div>
                     </form>

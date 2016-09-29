@@ -26,45 +26,23 @@ class TourCategoryModel
      * @param $localCode
      */
     public function getCategory($localCode){
-        $result1 = DB::select(DB::raw(
-            "SELECT
-                tb_post_grp.POST_GRP_ID,
-                tb_post_grp.POST_NM_$localCode AS  POST_NM,
-                tb_post_grp.POST_INTRO_$localCode AS POST_INTRO,
-                tb_post_grp.POST_LINK,
-                tb_post_grp.POST_RPV_YN,
-                (SELECT count(*) FROM tb_post_grp_connect where POST_GRP_ID = tb_post_grp.POST_GRP_ID) AS TOT_POST,
-                tb_img_mgmt.IMG_URL,
-                tb_img_mgmt.IMG_ALT,
-                tb_img_mgmt.IMG_TP
-            FROM
-                tb_post_grp
-                , tb_img_ref
-	            , tb_img_mgmt
-            WHERE
-                tb_post_grp.POST_RPV_YN = 'Y'
-                AND tb_post_grp.POST_GRP_ID LIKE 'T%'
-                AND tb_post_grp.POST_RPV_IMG_ID = tb_img_ref.REF_ID
-                AND tb_img_ref.IMG_ID = tb_img_mgmt.IMG_ID
-            LIMIT 8"
-        ));
 
         $result = DB::table('tb_post_grp')
-            ->leftJoin(DB::raw('tb_img_ref INNER JOIN tb_img_mgmt ON tb_img_ref.IMG_ID = tb_img_mgmt.IMG_ID'), 'tb_post_grp.POST_RPV_IMG_ID', '=', 'tb_img_ref.REF_ID')
+            ->leftJoin('tb_img_mgmt', 'tb_post_grp.POST_RPV_IMG_ID', '=', 'tb_img_mgmt.IMG_ID')
             ->where('tb_post_grp.POST_RPV_YN', '=', 'Y')
             ->where('tb_post_grp.POST_GRP_ID' , 'like', 'T%')
             ->select(
-                'tb_post_grp.POST_GRP_ID'
-                , 'tb_post_grp.POST_NM_'.$localCode.' AS POST_NM'
-                , 'tb_post_grp.POST_INTRO_'.$localCode.' AS POST_INTRO'
-                , 'tb_post_grp.POST_LINK'
-                , 'tb_post_grp.POST_RPV_YN'
-                , DB::raw('(SELECT count(*) FROM tb_post_grp_connect where POST_GRP_ID = tb_post_grp.POST_GRP_ID) AS TOT_POST')
-                , 'tb_img_mgmt.IMG_URL'
-                , 'tb_img_mgmt.IMG_ALT'
-                , 'tb_img_mgmt.IMG_TP'
+                'tb_post_grp.POST_GRP_ID AS pstGrpId'
+                , 'tb_post_grp.POST_NM_'.$localCode.' AS pstNm'
+                , 'tb_post_grp.POST_INTRO_'.$localCode.' AS pstIntro'
+                , 'tb_post_grp.POST_LINK AS pstLnk'
+                , 'tb_post_grp.POST_RPV_YN AS pstRpvYn'
+                , DB::raw('(SELECT count(*) FROM tb_post_grp_connect where POST_GRP_ID = tb_post_grp.POST_GRP_ID) AS pstTot')
+                , 'tb_img_mgmt.IMG_URL AS imgUrl'
+                , 'tb_img_mgmt.IMG_ALT AS imgAlt'
+                , 'tb_img_mgmt.IMG_TP AS imgTp'
             )
-            ->orderBy('TOT_POST', 'DESC')
+            ->orderBy('pstTot', 'DESC')
             ->take(8)
             ->get();
 

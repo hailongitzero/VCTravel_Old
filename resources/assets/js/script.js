@@ -986,13 +986,13 @@ if ( $(".woocommerce-checkout").length ) {
 	})
 }
 
-if ($(".contact-form").length) {
+if ($("#email-sub-form").length) {
 	/**/
 	/* contact form */
 	/**/
 
 	/* validate the contact form fields */
-	$(".contact-form").each(function(){
+	$("#email-sub-form").each(function(){
 
 	$(this).validate(  /*feedback-form*/{
 		onkeyup: false,
@@ -1001,16 +1001,12 @@ if ($(".contact-form").length) {
 		errorLabelContainer: $(this).parent().children(".alert.alert-danger").children(".message"),
 		rules:
 			{
-				name:	{	required: true },
 				email:{	required: true,	email: true	},
-				message: { required: true	}
 			},
 			messages:
 			{
-				name:	{	required: 'Please enter your name',	},
 				email:{	required: 'Please enter your email address',
 				email: 'Please enter a VALID email address'	},
-				message: { required: 'Please enter your message'	}
 			},
 			invalidHandler: function()
 			{
@@ -1021,7 +1017,7 @@ if ($(".contact-form").length) {
 			{
 				$(form).parent().children(".alert.alert-danger").slideUp('fast');
 				var $form = $(form).ajaxSubmit();
-				submit_handler($form, $(form).parent().children(".email_server_responce") );
+				submit_handler($form, $(form).parent().children(".email_server_response") );
 			}
 		});
 	})
@@ -1030,35 +1026,116 @@ if ($(".contact-form").length) {
 	var submit_handler =  function (form, wrapper){
 
 		var $wrapper = $(wrapper); //this class should be set in HTML code
-
 		$wrapper.css("display","block");
 		var data = {
-			action: "email_server_responce",
-			values: $(form).serialize()
+			email: form.children().children('#email').val(),
+			_token: $('meta[name="csrf-token"]').attr('content'),
 		};
-		//send data to server
-		$.post("php/contacts-process.php", data, function(s_response) {
-			s_response = $.parseJSON(s_response);
-			if(s_response.info == 'success'){
-				$wrapper.addClass("message message-success").append('<div role="alert" class="alert alert-success alt alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"></button><i class="alert-icon flaticon-suntour-check"></i><strong>Success!</strong><br>Your message was successfully delivered.</div>');
+		// send data to server
+		$.post("/subsEmail", data, function(response) {
+			if(response.info == 'Success'){
+				$wrapper.addClass("message message-success").append('<div role="alert" class="alert alert-success alt alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"></button><i class="alert-icon flaticon-suntour-check"></i><strong>Success!</strong><br>' + response.Content + '</div>');
 				$wrapper.delay(5000).slideUp(300, function(){
 					$(this).removeClass("message message-success").text("").fadeOut(500);
 					$wrapper.css("display","none");
 				});
 				$(form)[0].reset();
 			} else {
-				$wrapper.addClass("message message-error").append('<div role="alert" class="alert alert-warning alt alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"></button><i class="alert-icon flaticon-warning"></i><strong>Error!</strong><br>Server fail! Please try again later!</div>');
+				$wrapper.addClass("message message-error").append('<div role="alert" class="alert alert-warning alt alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"></button><i class="alert-icon flaticon-warning"></i><strong>Error!</strong><br>' + response.Content + '</div>');
 				$wrapper.delay(5000).hide(500, function(){
 					$(this).removeClass("message message-success").text("").fadeIn(500);
 					$wrapper.css("display","none");
 				});
 			}
-		});
+		}, "json");
+
 		return false;
 	}
 
 	$('form.form.contact-form').on("click", function() {
 	$(this).find('p.error').remove();
+	})
+}
+
+if ($("#tour-review-form").length) {
+	/**/
+	/* tour booking form */
+	/**/
+	/* validate the tour booking form fields */
+	$("#tour-review-form").each(function(){
+		$(this).validate(  /*feedback-form*/{
+			onkeyup: false,
+			onfocusout: false,
+			errorElement: 'p',
+			errorLabelContainer: $(this).parent().children(".alert.alert-danger").children(".message"),
+			rules:
+			{
+				firstName:{ required: true },
+				lastName:{ required: true },
+				email:{	required: true,	email: true	},
+				title:{ required: true},
+				content:{ required: true },
+			},
+			messages:
+			{
+				firstName:{ required: 'Please enter your first name'},
+				lastName:{ required: 'Please enter your last name'},
+				email:{	required: 'Please enter your email address'},
+				title: { required:'Please enter review title'	},
+				content:{ required: 'Please enter review content'},
+			},
+			invalidHandler: function()
+			{
+				$(this).parent().children().slideDown('fast');
+			},
+			submitHandler: function(form)
+			{
+				$(form).parent().children(".alert.alert-danger").slideUp('fast');
+				var $form = $(form).ajaxSubmit();
+				submit_handler($form, $(form).children(".review_server_response") );
+			}
+		});
+	})
+
+	/* Ajax, Server response */
+	var submit_handler =  function (form, wrapper){
+
+		var $wrapper = $(wrapper); //this class should be set in HTML code
+		$wrapper.css("display","block");
+		var data = {
+			id: form.children().children().children('#tourID').val(),
+			rate: form.children().children().children('#rateValue').val(),
+			firstName: form.children().children().children('#firstName').val(),
+			lastName: form.children().children().children('#lastName').val(),
+			email: form.children().children().children('#email').val(),
+			title: form.children().children().children('#title').val(),
+			content: form.children().children().children('#content').val(),
+			_token: $('meta[name="csrf-token"]').attr('content'),
+		};
+		// send data to server
+		$.post("tourReview", data, function(response) {
+			if(response.info == 'Success'){
+				$wrapper.addClass("message message-success").append('<div role="alert" class="alert alert-success alt alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"></button><i class="alert-icon flaticon-suntour-check"></i><strong>Success!</strong><br>' + response.Content + '</div>');
+				$wrapper.delay(3000).slideUp(300, function(){
+					$(this).removeClass("message message-success").text("").fadeOut(500);
+					$wrapper.css("display","none");
+				});
+				$(form)[0].reset();
+
+			} else {
+				$wrapper.addClass("message message-error").append('<div role="alert" class="alert alert-warning alt alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"></button><i class="alert-icon flaticon-warning"></i><strong>Error!</strong><br>' + response.Content + '</div>');
+				$wrapper.delay(5000).hide(500, function(){
+					$(this).removeClass("message message-success").text("").fadeIn(500);
+					$wrapper.css("display","none");
+				});
+			}
+		}, "json");
+
+		return false;
+	}
+
+	$('form#tour-review-form').children().children().on("click", function() {
+		$(this).find('p.error').remove();
 	})
 }
 
@@ -1095,7 +1172,6 @@ function mobile_nav_switcher_init() {
 
 	jQuery(document).on("click", "header nav .inner-nav.mobile_nav .mobile_menu_switcher", function() {
 		var nav = get_current_nav_level();
-		var cls = "opened";
 		if ( nav_container.hasClass(cls) ){
 			nav.stop().animate( {"margin-top": window.mobile_nav.animation_params.vertical_start + "px","opacity":0}, window.mobile_nav.animation_params.speed, function() {
 				nav_container.removeClass(cls);

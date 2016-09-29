@@ -10,275 +10,172 @@
     <div class="container">
         <div class="menu-widget with-switch mt-30 mb-30">
             <ul class="magic-line">
-                <li class="current_item"><a href="hotels-details.html#overview" class="scrollto">Overview</a></li>
-                <li><a href="hotels-details.html#prices" class="scrollto">Prices</a></li>
-                <li><a href="hotels-details.html#location" class="scrollto">Location</a></li>
-                <li><a href="hotels-details.html#amenties" class="scrollto">Amenties</a></li>
-                <li><a href="hotels-details.html#reviews" class="scrollto">Reviews (28) <span class="stars stars-5"></span></a></li>
+                @if(isset($mdTourDetail))
+                    @foreach($mdTourDetail as $tourHd)
+                        <li class="current_item"><a href="hotels-details.html#overview" class="scrollto">Overview</a></li>
+                        <li><a href="hotels-details.html#reviews" class="scrollto">Reviews ({{$tourHd->tourRateSeq}}) <div class="stars-perc"><span style="width:{{$tourHd->tourRate}}%"></span></div></a></li>
+                    @endforeach
+                @endif
             </ul>
         </div>
     </div>
     <div class="container">
-        <div id="flex-slider" class="flexslider">
-            <ul class="slides">
-                <li><img src="pic/flexslider/l-1.jpg" alt></li>
-                <li><img src="pic/flexslider/l-2.jpg" alt></li>
-                <li><img src="pic/flexslider/l-3.jpg" alt></li>
-                <li><img src="pic/flexslider/l-4.jpg" alt></li>
-                <li><img src="pic/flexslider/l-5.jpg" alt></li>
-                <li><img src="pic/flexslider/l-6.jpg" alt></li>
-                <li><img src="pic/flexslider/l-7.jpg" alt></li>
-                <li><img src="pic/flexslider/l-8.jpg" alt></li>
-                <li><img src="pic/flexslider/l-9.jpg" alt></li>
-                <li><img src="pic/flexslider/l-1.jpg" alt></li>
-            </ul>
-        </div>
-        <div id="flex-carousel" class="flexslider">
-            <ul class="slides">
-                <li><img src="pic/flexslider/1@2x.jpg" data-at2x="pic/flexslider/1@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/2.jpg" data-at2x="pic/flexslider/2@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/3.jpg" data-at2x="pic/flexslider/3@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/4.jpg" data-at2x="pic/flexslider/4@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/5.jpg" data-at2x="pic/flexslider/5@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/6.jpg" data-at2x="pic/flexslider/6@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/7@2x.jpg" data-at2x="pic/flexslider/7@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/8@2x.jpg" data-at2x="pic/flexslider/8@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/9.jpg" data-at2x="pic/flexslider/9@2x.jpg" alt></li>
-                <li><img src="pic/flexslider/1.jpg" data-at2x="pic/flexslider/1@2x.jpg" alt></li>
-            </ul>
-        </div>
+       <div class="row">
+           <div class="col-md-8">
+               <div id="flex-slider" class="flexslider">
+                   <ul class="slides">
+                       @if(isset($mdTourDetailImage))
+                           @foreach($mdTourDetailImage as $img)
+                               <li><img src="{{$img->imgTp =='R' ? $img->imgUrl : url('/').$img->imgUrl}}" alt="{{$img->imgAlt}}"></li>
+                           @endforeach
+                       @endif
+                   </ul>
+               </div>
+               <div id="flex-carousel" class="flexslider">
+                   <ul class="slides">
+                       @if(isset($mdTourDetailImage))
+                           @foreach($mdTourDetailImage as $img)
+                               <li><img src="{{$img->imgTp =='R' ? $img->imgUrl : url('/').$img->imgUrl}}" alt="{{$img->imgAlt}}" data-at2x="{{$img->imgTp =='R' ? substr($img->imgUrl, 0, -4).'@2x'.substr($img->imgUrl, -4, 4) : substr(url('/').$img->imgUrl, 0, -4).'@2x'.substr(url('/').$img->imgUrl, -4, 4)}}" alt="{{$img->imgAlt}}"></li>
+                           @endforeach
+                       @endif
+                   </ul>
+               </div>
+           </div>
+           <div class="col-md-4">
+               <div class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
+           </div>
+       </div>
     </div>
     <div class="container mt-30">
-        <h4 class="mb-20">Morbi facilisis nisi et leo egestas gravida</h4>
-        <div class="row">
-            <div class="col-md-8">
-                <p class="mb-15">Barcelo Eresin Topkapi offers a modern setting in Istanbul and features a swimming pool, free Wi-Fi and complimentary private parking on-site. It also has a sauna, a Jacuzzi and a Turkish steam bath. </p>
-                <p class="mb-15">Guests can enjoy a range of massage treatments and beauty therapy at the on-site spa, U Spa. It offers child-minding services, a currency exchange and a reception that is available 24/7. It also has superb facilities for meetings and events. </p>
-                <p class="mb-15">Rooms offer premium amenities, including mini bars, pillow menus and rain showers. All have a sofa bed, slippers and tea and coffee making facilities. </p>
-                <p class="mb-15">The hotel's restaurant, Picasso, serves Turkish and international cuisine. In the evening, guests are able to relax in the cosy lounge bar.</p>
-                <p>The area surrounding <ins class="alt-4">Barcelo Eresin</ins>  is popular for its shopping. The helpful staff at the tour desk are available to book tours and sightseeing trips in Istanbul.</p>
-            </div>
-            <div class="col-md-4">
-                <div class="bg-gray-3 p-30-40">
-                    <ul class="style-1 mb-0">
-                        <li>Parking</li>
-                        <li>Concierge service</li>
-                        <li>Gift shop</li>
-                        <li>Meeting/Banquet facilities</li>
-                        <li>Wheelchair accessible</li>
-                        <li>Restaurant</li>
-                        <li>Express check out</li>
-                        <li>Air-conditioned</li>
-                        <li>Babysitting/child services (surcharge)</li>
-                    </ul><a href="hotels-details.html#"><ins class="alt-5">More amenties</ins></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- section prices-->
-    <div id="prices" class="container mb-50 mt-40">
-        <div class="search-hotels room-search pattern">
-            <div class="search-room-title">
-                <h5>Choose your room</h5>
-            </div>
-            <div class="tours-container">
-                <div class="tours-box">
-                    <div class="tours-search mb-20">
-                        <form method="post" class="form search divider-skew">
-                            <div class="search-wrap">
-                                <input type="text" placeholder="Destination" class="form-control search-field"><i class="flaticon-suntour-map search-icon"></i>
+        @if(isset($mdTourDetail))
+            @foreach($mdTourDetail as $tour)
+                <h4 class="mb-20">{{$tour->tourTit}}</h4>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="tabs">
+                            <div class="block-tabs-btn clearfix">
+                                <div data-tabs-id="tabs1" class="tabs-btn active">Tour Content</div>
+                                <div data-tabs-id="tabs2" class="tabs-btn">Schedule Detail</div>
                             </div>
-                        </form>
-                        <div class="tours-calendar divider-skew">
-                            <input placeholder="Depart date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="calendar-default textbox-n"><i class="flaticon-suntour-calendar calendar-icon"></i>
+                            <!-- tabs keeper-->
+                            <div class="tabs-keeper">
+                                <div data-tabs-id="cont-tabs1" class="container-tabs active">
+                                    {!! $tour->tourCnt !!}
+                                </div>
+                                <div data-tabs-id="cont-tabs2" class="container-tabs">
+                                    {!! $tour->tourSchedule !!}
+                                </div>
+                            </div>
+                            <!-- /tabs keeper-->
                         </div>
-                        <div class="tours-calendar divider-skew">
-                            <input placeholder="Return date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="calendar-default textbox-n"><i class="flaticon-suntour-calendar calendar-icon"></i>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-info p-30-40">
+                            <table class="table alt table-info">
+                                <tbody>
+                                <tr>
+                                    <td width="50%">Price</td>
+                                    <td><span class="price">{{$tour->tourPrc.' '.$tour->tourCurrUnt}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Length</td>
+                                    <td>{{$tour->tourLgt}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Promotion</td>
+                                    <td><span class="prm">{{$tour->tourPrmPrc.' %'}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Price after Promotion</td>
+                                    <td><span class="price">{{$tour->tourFnlPrc.' '.$tour->tourCurrUnt}}</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="btn-cover-layout">
+                                <a id="tour-booking" href="#!" class="cws-button small alt mb-20">Book Now</a>
+                            </div>
                         </div>
-                        <div class="selection-box divider-skew"><i class="flaticon-suntour-adult box-icon"></i>
-                            <select>
-                                <option>Adult</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
-                        </div>
-                        <div class="selection-box divider-skew"><i class="flaticon-suntour-children box-icon"></i>
-                            <select>
-                                <option>Child</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
-                        </div>
-                        <div class="selection-box"><i class="flaticon-suntour-bed box-icon"></i>
-                            <select>
-                                <option>Room</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
-                        </div>
-                        <div class="button-search">GO</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="room-table">
-            <table class="table alt-2">
-                <thead>
-                <tr>
-                    <th>Room Type</th>
-                    <th>Max.</th>
-                    <th>Options</th>
-                    <th>Today's price</th>
-                    <th>Booking</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td> <img src="pic/190x130.jpg" data-at2x="pic/190x130@2x.jpg" alt>
-                        <h6>Grand Hotel Wien</h6>
-                        <p class="mb-0">(Extra beds available: Crib, <br> Rollaway bed) Room sleeps <br> 4 guests (up to 3 children)</p>
-                    </td>
-                    <td>
-                        <div class="table-icon"><i class="flaticon-people"></i><i class="flaticon-people"></i><i class="flaticon-people"></i><i class="flaticon-people"></i><i class="flaticon-people alt"></i></div>
-                        <p>4 guest</p>
-                    </td>
-                    <td>
-                        <ul class="style-1">
-                            <li>Special conditions, pay when you stay</li>
-                            <li>Breakfast included</li>
-                            <li>Free Parking</li>
-                        </ul>
-                    </td>
-                    <td class="room-price">$120</td>
-                    <td> <a href="hotels-details.html#" class="cws-button alt gray">Book now</a></td>
-                </tr>
-                <tr>
-                    <td> <img src="pic/190x130.jpg" data-at2x="pic/190x130@2x.jpg" alt>
-                        <h6>Deluxe Room, Sea View</h6>
-                        <p class="mb-0">(Extra beds available: Crib, <br> Rollaway bed)</p>
-                    </td>
-                    <td>
-                        <div class="table-icon"><i class="flaticon-people"></i><i class="flaticon-people"></i><i class="flaticon-people alt"></i><i class="flaticon-people alt"></i><i class="flaticon-people alt"></i></div>
-                        <p>2 guest</p>
-                    </td>
-                    <td>
-                        <ul class="style-1">
-                            <li>Special conditions, pay when you stay</li>
-                            <li>Breakfast included</li>
-                            <li>Free Parking</li>
-                            <li>Free Internet</li>
-                        </ul>
-                    </td>
-                    <td class="room-price">Sold out</td>
-                    <td> <a href="hotels-details.html#" class="cws-button alt gray">Book now</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+            @endforeach
+        @endif
     </div>
-    <!-- section location-->
-    <div id="location" class="container mb-50">
-        <div class="row">
-            <div class="col-md-12">
-                <h4 class="trans-uppercase mb-10">Location</h4>
-                <div class="cws_divider mb-30"></div>
-                <!-- google map-->
-                <div class="map-wrapper">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25295.930156304785!2d16.371063311644324!3d48.208404844730474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d07986fcad78b%3A0x73f5a4d267cc4174!2zTmFnbGVyZ2Fzc2UgMTAsIDEwMTAgV2llbiwg0JDQstGB0YLRgNC40Y8!5e0!3m2!1sru!2sua!4v1453294615596" allowfullscreen=""></iframe>
-                </div>
-                <ul class="icon inline mt-20">
-                    <li> <a href="hotels-details.html#">9300 Meadow Lane, Kalamazoo, MI 49009<i class="flaticon-suntour-map"></i></a></li>
-                    <li> <a href="hotels-details.html#">00 1 877-859-5095<i class="flaticon-suntour-phone"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- section amenties-->
-    <div id="amenties" class="container mb-50">
-        <div class="row">
-            <div class="col-md-12">
-                <h4 class="trans-uppercase mb-10">Amenties</h4>
-                <div class="cws_divider mb-10"></div>
-            </div>
-        </div>
-        <div class="row mt-0 masonry">
-            <div class="col-md-3 col-sm-6">
-                <h6 class="trans-uppercase">General</h6>
-                <ul class="style-1">
-                    <li>Room Service</li>
-                    <li>Newspapers</li>
-                    <li>Non-smoking Rooms</li>
-                    <li>Family Rooms</li>
-                    <li>Elevator</li>
-                    <li>Safe</li>
-                    <li>Heating</li>
-                    <li>All Spaces Non-Smoking</li>
-                    <li>Air Conditioning</li>
-                    <li>Carpeted</li>
-                </ul>
-                <h6 class="trans-uppercase mt-20">Business Facilities</h6>
-                <ul class="style-1">
-                    <li>RooFax/Photocopying</li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <h6 class="trans-uppercase">Media & Technology</h6>
-                <ul class="style-1">
-                    <li>Telephone</li>
-                    <li>Radio</li>
-                    <li>Cable channels</li>
-                    <li>Flat-screen TV</li>
-                </ul>
-                <h6 class="trans-uppercase mt-20"> Bathroom</h6>
-                <ul class="style-1">
-                    <li>Hairdryer</li>
-                    <li>Toilet</li>
-                    <li>Bathroom</li>
-                    <li>Slippers</li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <h6 class="trans-uppercase">Food & Drink</h6>
-                <ul class="style-1">
-                    <li>Bar</li>
-                    <li>Breakfast in the Room</li>
-                    <li>Restaurant with Dining Menu</li>
-                    <li>FSpecial Diet Meals (upon request)</li>
-                    <li>Minibar</li>
-                </ul>
-                <h6 class="trans-uppercase mt-20"> Activites</h6>
-                <ul class="style-1">
-                    <li>Hiking</li>
-                    <li>Cycling</li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <h6 class="trans-uppercase">Front Desk Services</h6>
-                <ul class="style-1">
-                    <li>24-Hour Front Desk</li>
-                    <li>Currency Exchange</li>
-                    <li>Tour Desk</li>
-                    <li>Ticket Service</li>
-                    <li>Baggage Storage</li>
-                    <li>Concierge Service</li>
-                </ul>
-                <h6 class="trans-uppercase mt-20"> Cleaning Services</h6>
-                <ul class="style-1">
-                    <li>Laundry</li>
-                    <li>Dry Cleaning</li>
-                    <li>Ironing Service</li>
-                    <li>Shoeshine</li>
-                    <li>Daily Housekeeping</li>
-                </ul>
+
+    <!-- login popup-->
+    <div id="tour-popup" class="tour-popup">
+        <div class="tour-popup-wrap">
+            <div class="container-fluid">
+            @if(isset($mdTourDetail))
+                @foreach($mdTourDetail as $tour)
+                    <div class="title-wrap">
+                        <h2>Booking</h2><i class="close-button flaticon-close"></i>
+                    </div>
+                    <div class="row">
+                        <div class="tour-content">
+                            <form class="form booking-form" id="tour-booking-form" action="{{url('/tourBooking')}}" method="POST">
+                                <div id="feedback-form-success" class="booking_server_response"></div>
+                                {{ csrf_field() }}
+                                <input name="_method" type="hidden" value="POST">
+                                <input type="hidden" id="tourID" name="tourID" value="{{$tour->tourId}}">
+                                <div class="col col-md-6 col-sm12">
+                                    <input type="text" id="custName" name="custName" value="" size="50" placeholder="Nhập họ tên ..." aria-required="true" class="form-row">
+                                </div>
+                                <div class="col col-md-6 col-sm12">
+                                    <input type="tel" id="custPhone" name="custPhone" value="" size="15" placeholder="Enter Your Phone Number ..." aria-required="true" class="form-row">
+                                    </div>
+                                <div class="col col-md-6 col-sm12">
+                                    <input type="email" id="custEmail" name="custEmail" value="" size="40" placeholder="Enter Your Email ..." aria-required="true" class="form-row">
+                                </div>
+                                <div class="col col-md-6 col-sm12">
+                                    <i class="flaticon-suntour-adult box-icon"></i>
+                                    <select id="adultQty" name="adultQty">
+                                        <option value="0">Adult</option>
+                                        <option value="1"> 1-2 </option>
+                                        <option value="2"> 3-5 </option>
+                                        <option value="3"> 6-10 </option>
+                                        <option value="4"> 11-20 </option>
+                                        <option value="5"> >20 </option>
+                                    </select>
+                                    <i class="flaticon-suntour-children box-icon"></i>
+                                    <select id="childQty" name="childQty">
+                                        <option value="0">Child</option>
+                                        <option value="1"> 1-2 </option>
+                                        <option value="2"> 3-5 </option>
+                                        <option value="3"> 6-10 </option>
+                                        <option value="4"> 11-20 </option>
+                                        <option value="5"> >20 </option>
+                                    </select>
+                                </div>
+                                <div class="col col-md-12 col-sm12">
+                                    <input type="text" id="custAddress" name="custAddress" value="" size="150" placeholder="Enter Your Address ..." aria-required="true" class="form-row-full">
+                                </div>
+                                <div class="col col-md-6 col-sm12">
+                                    <div class="tours-calendar divider-skew">
+                                        <input id="departDate" name="departDate" placeholder="Depart date" type="text" value="" onfocus="(this.type='date')" onblur="(this.type='text')" class="calendar-default textbox-n"><i class="flaticon-suntour-calendar box-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="col col-md-6 col-sm12">
+                                    <div class="tours-calendar divider-skew">
+                                        <input id="returnDate" name="returnDate" placeholder="Return date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="calendar-default textbox-n"><i class="flaticon-suntour-calendar box-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12 col-sm12">
+                                    <textarea id="custContent" name="custContent" class="form-row" placeholder="Content.."></textarea>
+                                </div>
+                                <a href="#!" id="tourBookingBtn" class="cws-button gray alt full-width mt-20">Booking</a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tour-bot">
+                        <p>{{$tour->tourTit.' - '.$tour->tourId}}</p>
+                    </div>
+                @endforeach
+            @endif
             </div>
         </div>
     </div>
+    <!-- ! login popup-->
+
     <!-- section reviews-->
     <div id="reviews" class="container mb-60">
         <div class="row">
@@ -289,61 +186,52 @@
         </div>
         <div class="reviews-wrap">
             <div class="reviews-top pattern relative">
-                <div class="reviews-total">
-                    <h5>Excellent</h5>
-                    <div class="reviews-sub-mark">4.2</div>
-                    <div class="stars-perc"><span style="width:85%"></span></div><span>Based on 67 reviews</span>
-                </div>
-                <div class="reviews-marks">
-                    <ul>
-                        <li>Cleanliness<span><span class="stars-perc"><span style="width:85%"></span></span>4.5</span></li>
-                        <li>Location<span><span class="stars-perc"><span style="width:80%"></span></span>4.0</span></li>
-                        <li>Staff<span><span class="stars-perc"><span style="width:100%"></span></span>5.0</span></li>
-                        <li>Free Wi-Fi<span><span class="stars-perc"><span style="width:65%"> </span></span>3.5</span></li>
-                    </ul>
-                    <ul>
-                        <li>Comfort<span><span class="stars-perc"><span style="width:85%"> </span></span>4.5</span></li>
-                        <li>Facilities<span><span class="stars-perc"><span style="width:80%"></span></span>4.0</span></li>
-                        <li>Value for money<span><span class="stars-perc"><span style="width:100%"> </span></span>5.0</span></li>
-                    </ul>
-                </div>
+                @if(isset($mdTourDetail))
+                    @foreach($mdTourDetail as $tourHd)
+                        <div class="reviews-total">
+                            @if(($tourHd->tourRate)/20 <= 1)
+                                <h5>Terrible</h5>
+                            @elseif(($tourHd->tourRate)/20 <= 2)
+                                <h5>Bad</h5>
+                            @elseif(($tourHd->tourRate)/20 <= 3)
+                                <h5>Normal</h5>
+                            @elseif(($tourHd->tourRate)/20 <= 4)
+                                <h5>Good</h5>
+                            @elseif(($tourHd->tourRate)/20 <= 5)
+                                <h5>Excellent</h5>
+                            @endif
+                            <div class="reviews-sub-mark">{{($tourHd->tourRate)/20}}</div>
+                            <div class="stars-perc"><span style="width:{{$tourHd->tourRate}}%"></span></div><span>{{$tourHd->tourRateSeq}} reviews</span>
+                        </div>
+                        <div class="reviews-marks">
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <div class="comments">
-                <div class="comment-body">
-                    <div class="avatar"><img src="pic/blog/90x90/1.jpg" data-at2x="pic/blog/90x90/1@2x.jpg" alt>12 Reviews</div>
-                    <div class="comment-info">
-                        <div class="comment-meta">
-                            <div class="title">
-                                <h5>Lovely clean, comfortable hotel <span>Rachel George</span></h5>
-                            </div>
-                            <div class="comment-date">
-                                <div class="stars stars-5">5</div><span>Mon, 03-23-2016</span>
-                            </div>
-                        </div>
-                        <div class="comment-content">
-                            <p>Proin ut pretium sem. Maecenas id commodo massa. Sed vitae urna hendrerit, commodo dolor non, porttitor odio. Suspendisse ac arcu eu enim lobortis luctus sed quis velit. Nam ut vestibulum orci, at sodales libero. Fusce egestas urna a dolor fermentum, id tincidunt leo eleifend. Phasellus pulvinar hendrerit pulvinar.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment-body">
-                    <div class="avatar"><img src="pic/blog/90x90/2.jpg" data-at2x="pic/blog/90x90/2@2x.jpg" alt>12 Reviews</div>
-                    <div class="comment-info">
-                        <div class="comment-meta">
-                            <div class="title">
-                                <h5>Brilliant hotel with history <span>Phillip Ferguson</span></h5>
-                            </div>
-                            <div class="comment-date">
-                                <div class="stars stars-4">4</div><span>Mon, 03-23-2016</span>
+                @if(isset($mdTourComment))
+                    @foreach($mdTourComment as $tourCm)
+                        <div class="comment-body">
+                            <div class="avatar"><img src="/resources/assets/img/dummy.png" data-at2x="/resources/assets/img/dummy.png" alt></div>
+                            <div class="comment-info">
+                                <div class="comment-meta">
+                                    <div class="title">
+                                        <h5>{{$tourCm->cmTit}} <span>{{$tourCm->cmLName.' '.$tourCm->cmFName}}</span></h5>
+                                    </div>
+                                    <div class="comment-date">
+                                        <div class="stars stars-{{$tourCm->cmRate}}">{{$tourCm->cmRate}}</div><span>{{$tourCm->cmCrtDt}}</span>
+                                    </div>
+                                </div>
+                                <div class="comment-content">
+                                    <p>{{$tourCm->cmCnt}}</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="comment-content">
-                            <p>Vestibulum tellus justo, scelerisque sit amet imperdiet et, placerat non massa. Aliquam erat volutpat. Proin vitae enim cursus, dapibus est at, feugiat mauris. Sed molestie dolor sed ante dictum dictum. Quisque at nulla ipsum. Praesent interdum euismod turpis, eget tristique justo porta eu. Cras ullamcorper pulvinar nibh, eget faucibus neque porta in.</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
             </div>
             <div class="reviews-bottom">
-                <h4>You've been in this hotel?</h4>
+                <h4>You've been travel this tour?</h4>
             </div>
         </div>
     </div>
@@ -356,68 +244,60 @@
             </div>
         </div>
         <div class="review-content pattern relative">
-            <div class="row">
-                <div class="col-md-5 mb-md-30 mb-xs-0">
-                    <div class="review-total"><img src="pic/blog/120x120.jpg" data-at2x="pic/blog/120x120@2x.jpg" alt>
-                        <div class="review-total-content">
-                            <h6>Hotel Bohemians</h6>
-                            <div class="stars stars-4"></div>
-                            <ul class="icon">
-                                <li>Istanbul, Turkey<i class="flaticon-suntour-map"></i></li>
-                            </ul>
+            @if(isset($mdTourDetail))
+                @foreach($mdTourDetail as $tourVw)
+                    <div class="row">
+                        <div class="col-md-5 mb-md-30 mb-xs-0">
+                            <div class="review-total"><img src="{{$tourVw->imgUrl}}" data-at2x="{{$tourVw->imgUrl}}" alt>
+                                <div class="review-total-content">
+                                    <h6>{{$tourVw->tourTit}}</h6>
+                                    <div class="stars-perc"><span style="width:{{$tourVw->tourRate}}%"></span></div><span>{{$tourVw->tourRateSeq}} reviews</span>
+                                    <ul class="icon">
+                                        <li>{{$tourVw->prvNm}}, {{$tourVw->ntnNm}}<i class="flaticon-suntour-map"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="review-marks clearfix mb-30">
+                                <ul>
+                                    <li>
+                                        <label for="tourRate" class="control-label">Rate This</label>
+                                        <input id="tourRate" name="tourRate" class="rating rating-loading" data-min="0" data-max="5" data-step="1">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="review-marks clearfix mb-30">
-                        <ul>
-                            <li>Cleanliness
-                                <div class="stars stars-5"></div>
-                            </li>
-                            <li>Location
-                                <div class="stars stars-5"></div>
-                            </li>
-                            <li>Staff
-                                <div class="stars stars-5"></div>
-                            </li>
-                            <li>Free Wi-Fi
-                                <div class="stars stars-5"></div>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>Comfort
-                                <div class="stars stars-5"></div>
-                            </li>
-                            <li>Facilities
-                                <div class="stars stars-5"></div>
-                            </li>
-                            <li>Value for money
-                                <div class="stars stars-5"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <form class="form clearfix">
-                <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" name="email" value="" size="40" placeholder="First Name" aria-required="true" class="form-row form-row-first">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" name="email" value="" size="40" placeholder="Last Name" aria-required="true" class="form-row form-row-first">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" name="email" value="" size="40" placeholder="Booking Number" aria-required="true" class="form-row form-row-first">
-                    </div>
-                    <div class="col-md-12">
-                        <input type="text" name="password" value="" size="40" placeholder="Title of your review" aria-required="true" class="form-row form-row-last">
-                    </div>
-                    <div class="col-md-12">
-                        <textarea name="message" cols="40" rows="4" placeholder="Message of your review" aria-invalid="false" aria-required="true" class="mb-20"></textarea>
-                        <input type="submit" value="Add a review" class="cws-button alt float-right">
-                    </div>
-                </div>
-            </form>
+                    <form id="tour-review-form" class="form clearfix" action="" method="POST">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="feedback-form-success" class="review_server_response"></div>
+                                {{ csrf_field() }}
+                                <input name="_method" type="hidden" value="POST">
+                                <input id="rateValue" name="rateValue" type="hidden" value="5" aria-required="true" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="hidden" id="tourID" name="tourID" value="{{$tourVw->tourId}}"  aria-required="true" required>
+                                <input type="text" id="firstName" name="firstName" value="" size="40" placeholder="First Name" aria-required="true" class="form-row form-row-first" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" id="lastName" name="lastName" value="" size="40" placeholder="Last Name" aria-required="true" class="form-row form-row-first" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="email" id="email" name="email" value="" size="40" placeholder="Email" aria-required="true" class="form-row form-row-first" required>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" id="title" name="title" value="" size="40" placeholder="Title of your review" required aria-required="true" class="form-row form-row-last">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea name="content" id="content" cols="40" rows="4" placeholder="Message of your review" aria-invalid="false" required aria-required="true" class="mb-20"></textarea>
+                                <input type="submit" value="Add a review" class="cws-button alt float-right">
+                            </div>
+                        </div>
+                    </form>
+                @endforeach
+            @endif
         </div>
     </div>
     <!-- ! review -->

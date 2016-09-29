@@ -10,45 +10,45 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::group(['middleware' => ['web']], function () {
+    //
+});
 /* Index page route*/
-Route::get('/', 'IndexController@index');
+Route::get('', 'IndexController@index');
 
 /* About us page route*/
-Route::get('about', function () {
-    return view('about');
-});
+Route::get('pages/{id}', 'PagesController@getPagesRedirect');
 
-/* Tour page route*/
-Route::get('tour', function () {
-    return view('tour');
-});
 
-/* News page route*/
-Route::get('news', function () {
-    return view('news');
-});
+/* Tour list page route*/
+Route::get('tours', 'TourController@getTourList');
 
-/* Services page route*/
-Route::get('services', function () {
-    return view('services');
-});
+/* Tour group list page route*/
+Route::get('tours/{id}', 'TourController@getTourListByGroup');
 
-/* Hotel page route*/
-Route::get('hotel', function () {
-    return view('hotel');
-});
+/* Tour detail page route*/
+Route::get('tour-detail/{id}', 'TourController@getTourDetail');
 
-/* Restaurant page route*/
-Route::get('restaurant', function () {
-    return view('restaurant');
-});
+/* News List */
+Route::get('news', 'NewsController@getNewsList');
 
-/* Contact page route*/
-Route::get('contact', function () {
-    return view('contact');
-});
+/* News Group List */
+Route::get('news/{id}', 'NewsController@getNewsListGroup');
 
-/* Payment page route*/
-Route::get('payment', function () {
-    return view('payment');
-});
+/* News Detail */
+Route::get('news-detail/{id}', 'NewsController@getNewsDetail');
+
+/* Guide List */
+Route::get('guide', 'GuideController@getGuideList');
+
+/* Guide List */
+Route::get('guide-detail/{id}', 'GuideController@getGuideDetail');
+
+/* Subscribe Email */
+Route::post('/subsEmail', 'IndexController@regSubscribeEmail')->middleware('email');
+
+/* Tour booking */
+Route::post('tourBooking', 'TourController@tourBooking')->middleware('booking');
+
+/* Tour review */
+Route::post('tourReview', 'TourController@tourReview')->middleware('review');

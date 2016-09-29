@@ -6,16 +6,45 @@
  * Time: 4:50 PM
  */
 ?>
-<section style="background-image:url('pic/breadcrumbs/bg-2.jpg');" class="breadcrumbs style-2 gray-90">
+<!-- breadcrumbs start-->
+<section style="background-image:url('/resources/assets/pic/breadcrumbs/bg-1.jpg');" class="breadcrumbs">
     <div class="container">
-        <div class="text-left breadcrumbs-item"><a href="hotels-details.html#">home</a><i>/</i><a href="hotels-details.html#">hotels</a><i>/</i><a href="hotels-details.html#" class="last"><span>Hotel</span> Bohemians</a>
-            <h2><span>Hotel</span> Bohemians<span class="stars stars-4"><span>4 stars</span></span></h2>
-            <div class="location"><i class="flaticon-suntour-map"></i>
-                <p class="font-4">9300 Meadow Lane, Kalamazoo, MI 49009, Istanbul, Turkey</p><a href="hotels-details.html#location" class="scrollto">Show map</a>
-            </div>
-        </div>
-        <div class="breadright"><a href="hotels-details.html#" class="cws-button small alt">Get price</a>
-            <p>Best Price Guarantee</p>
+        <div class="text-left breadcrumbs-item">
+            <a href="{{url('')}}">home</a>
+            <i>/</i>
+            @if(isset($mdBreadCrumb))
+                @foreach($mdBreadCrumb as $brc)
+                    @if(isset($brc->grp))
+                        <a href="{{url($brc->grpLnk)}}">{{$brc->grp}}</a>
+                        @if(isset($brc->pstGrpNm))
+                            <i>/</i>
+                            <a href="{{url($brc->grpLnk.'/'.$brc->pstGrpLnk)}}">{{$brc->pstGrpNm}}</a>
+                            @if(isset($brc->pstTit))
+                                <i>/</i>
+                                @if($brc->grp == 'tours')
+                                    <a href="{{url('tour-detail/'.$brc->pstLnk)}}">{{$brc->pstTit}}</a>
+                                @elseif($brc->grp == 'news')
+                                    <a href="{{url('news-detail/'.$brc->pstLnk)}}">{{$brc->pstTit}}</a>
+                                @elseif($brc->grp == 'guide')
+                                    <a href="{{url('guide-detail/'.$brc->pstLnk)}}">{{$brc->pstTit}}</a>
+                                @endif
+                                <h2><span>{{$brc->pstTit}} {{isset($postCount) ? '('.$postCount.')' : ""}}</span></h2>
+                            @else
+                                <h2><span>{{$brc->pstGrpNm}} {{isset($postCount) ? '('.$postCount.')' : ""}}</span></h2>
+                            @endif
+                        @elseif(isset($brc->pstTit))
+                            @if($brc->grp == 'guide')
+                                <i>/</i>
+                                <a href="{{url('guide-detail/'.$brc->pstLnk)}}">{{$brc->pstTit}}</a>
+                                <h2><span>{{$brc->pstTit}} {{isset($postCount) ? '('.$postCount.')' : ""}}</span></h2>
+                            @endif
+                        @else
+                            <h2><span>{{$brc->grp}} {{isset($postCount) ? '('.$postCount.')' : ""}}</span></h2>
+                        @endif
+                    @endif
+                @endforeach
+            @endif
         </div>
     </div>
 </section>
+<!-- ! breadcrumbs end-->

@@ -19,27 +19,26 @@
             <div class="col-md-4"><img src="/resources/assets/pic/promo-1.png" data-at2x="/resources/assets/pic/promo-1@2x.png" alt class="mt-md-0 mt-minus-70"></div>
         </div>
     </div>
-    <div class="features-tours-full-width">
+    <div class="container features-tours-full-width">
         <div class="features-tours-wrap clearfix">
-            @if(isset($rpvCate))
-                @foreach($rpvCate as $cate)
-                    <div class="features-tours-item">
-                        <div class="features-media"><img src="{{$cate->IMG_TP =='R' ? $cate->IMG_URL : url('/').$cate->IMG_URL}}" data-at2x="{{$cate->IMG_TP =='R' ? substr($cate->IMG_URL, 0, -4).'@2x'.substr($cate->IMG_URL, -4, 4) : substr(url('/').$cate->IMG_URL, 0, -4).'@2x'.substr(url('/').$cate->IMG_URL, -4, 4)}}" alt>
-                            <div class="features-info-top">
-                                <div class="info-price font-4"><span>Total</span> {{$cate->TOT_POST}} tours</div>
-                                {{--<div class="info-temp font-4"><span>local temperature</span> 30° / 86°</div>--}}
-                                <p class="info-text">{{$cate->POST_INTRO}}</p>
+                @if(isset($rpvCate))
+                    @foreach($rpvCate as $cate)
+                            <div class="features-tours-item">
+                                <div class="features-media"><img src="{{$cate->imgTp =='R' ? $cate->imgUrl : url('/').$cate->imgUrl}}" data-at2x="{{$cate->imgTp =='R' ? substr($cate->imgUrl, 0, -4).'@2x'.substr($cate->imgUrl, -4, 4) : substr(url('/').$cate->imgUrl, 0, -4).'@2x'.substr(url('/').$cate->imgUrl, -4, 4)}}" alt>
+                                    <div class="features-info-top">
+                                        <div class="info-price font-4"><span>Total</span> {{$cate->pstTot}} tours</div>
+                                        <p class="info-text">{{$cate->pstIntro}}</p>
+                                    </div>
+                                    <div class="features-info-bot">
+                                        <h4 class="title">
+                                            {{$cate->pstNm}}
+                                        </h4>
+                                        <a href="{{url('tours/'.$cate->pstLnk)}}" class="button">Details</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="features-info-bot">
-                                <h4 class="title">
-                                    {{--<span class="font-4">{{$cate->POST_NM}}</span> --}}{{$cate->POST_NM}}
-                                </h4>
-                                <a href="hotels-details.html" class="button">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
+                    @endforeach
+                @endif
         </div>
     </div>
 </section>

@@ -25,6 +25,7 @@ class Authenticate
             }
         }
 
+        if($request->input('mail'))
         return $next($request);
     }
 }

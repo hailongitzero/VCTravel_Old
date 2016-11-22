@@ -8,11 +8,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Models;
 use Illuminate\Support\Facades\App;
-use Illuminate\View\View;
 
 
 class GuideController extends Controller

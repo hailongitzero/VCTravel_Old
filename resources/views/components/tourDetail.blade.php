@@ -174,131 +174,148 @@
             </div>
         </div>
     </div>
-    <!-- ! login popup-->
+    <!-- ! booking popup-->
 
     <!-- section reviews-->
     <div id="reviews" class="container mb-60">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <h4 class="trans-uppercase mb-10">Reviews travellers</h4>
                 <div class="cws_divider mb-30"></div>
-            </div>
-        </div>
-        <div class="reviews-wrap">
-            <div class="reviews-top pattern relative">
-                @if(isset($mdTourDetail))
-                    @foreach($mdTourDetail as $tourHd)
-                        <div class="reviews-total">
-                            @if(($tourHd->tourRate)/20 <= 1)
-                                <h5>Terrible</h5>
-                            @elseif(($tourHd->tourRate)/20 <= 2)
-                                <h5>Bad</h5>
-                            @elseif(($tourHd->tourRate)/20 <= 3)
-                                <h5>Normal</h5>
-                            @elseif(($tourHd->tourRate)/20 <= 4)
-                                <h5>Good</h5>
-                            @elseif(($tourHd->tourRate)/20 <= 5)
-                                <h5>Excellent</h5>
-                            @endif
-                            <div class="reviews-sub-mark">{{($tourHd->tourRate)/20}}</div>
-                            <div class="stars-perc"><span style="width:{{$tourHd->tourRate}}%"></span></div><span>{{$tourHd->tourRateSeq}} reviews</span>
-                        </div>
-                        <div class="reviews-marks">
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-            <div class="comments">
-                @if(isset($mdTourComment))
-                    @foreach($mdTourComment as $tourCm)
-                        <div class="comment-body">
-                            <div class="avatar"><img src="/resources/assets/img/dummy.png" data-at2x="/resources/assets/img/dummy.png" alt></div>
-                            <div class="comment-info">
-                                <div class="comment-meta">
-                                    <div class="title">
-                                        <h5>{{$tourCm->cmTit}} <span>{{$tourCm->cmLName.' '.$tourCm->cmFName}}</span></h5>
-                                    </div>
-                                    <div class="comment-date">
-                                        <div class="stars stars-{{$tourCm->cmRate}}">{{$tourCm->cmRate}}</div><span>{{$tourCm->cmCrtDt}}</span>
+
+                <div class="reviews-wrap">
+                    <div class="reviews-top pattern relative">
+                        @if(isset($mdTourDetail))
+                            @foreach($mdTourDetail as $tourHd)
+                                <div class="reviews-total">
+                                    @if(($tourHd->tourRate)/20 <= 1)
+                                        <h5>Terrible</h5>
+                                    @elseif(($tourHd->tourRate)/20 <= 2)
+                                        <h5>Bad</h5>
+                                    @elseif(($tourHd->tourRate)/20 <= 3)
+                                        <h5>Normal</h5>
+                                    @elseif(($tourHd->tourRate)/20 <= 4)
+                                        <h5>Good</h5>
+                                    @elseif(($tourHd->tourRate)/20 <= 5)
+                                        <h5>Excellent</h5>
+                                    @endif
+                                    <div class="reviews-sub-mark">{{($tourHd->tourRate)/20}}</div>
+                                    <div class="stars-perc"><span style="width:{{$tourHd->tourRate}}%; max-width: 100%"></span></div><span>{{$tourHd->tourRateSeq}} reviews</span>
+                                </div>
+                                <div class="reviews-marks">
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="comments">
+                        @if(isset($mdTourComment))
+                            @foreach($mdTourComment as $tourCm)
+                                <div class="comment-body">
+                                    <div class="avatar"><img src="/resources/assets/img/dummy.png" data-at2x="/resources/assets/img/dummy.png" alt></div>
+                                    <div class="comment-info">
+                                        <div class="comment-meta">
+                                            <div class="title">
+                                                <h5>{{$tourCm->cmTit}} <span>{{$tourCm->cmLName.' '.$tourCm->cmFName}}</span></h5>
+                                            </div>
+                                            <div class="comment-date">
+                                                <div class="stars stars-{{$tourCm->cmRate}}">{{$tourCm->cmRate}}</div><span>{{$tourCm->cmCrtDt}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="comment-content">
+                                            <p>{{$tourCm->cmCnt}}</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="comment-content">
-                                    <p>{{$tourCm->cmCnt}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-            <div class="reviews-bottom">
-                <h4>You've been travel this tour?</h4>
-            </div>
-        </div>
-    </div>
-    <!-- review -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="reviews-bottom">
+                        <h4>You've been travel this tour?</h4>
+                    </div>
+                </div>
+
                 <h4 class="trans-uppercase mb-10">Write a review</h4>
                 <div class="cws_divider mb-30"></div>
-            </div>
-        </div>
-        <div class="review-content pattern relative">
-            @if(isset($mdTourDetail))
-                @foreach($mdTourDetail as $tourVw)
-                    <div class="row">
-                        <div class="col-md-5 mb-md-30 mb-xs-0">
-                            <div class="review-total"><img src="{{$tourVw->imgUrl}}" data-at2x="{{$tourVw->imgUrl}}" alt>
-                                <div class="review-total-content">
-                                    <h6>{{$tourVw->tourTit}}</h6>
-                                    <div class="stars-perc"><span style="width:{{$tourVw->tourRate}}%"></span></div><span>{{$tourVw->tourRateSeq}} reviews</span>
-                                    <ul class="icon">
-                                        <li>{{$tourVw->prvNm}}, {{$tourVw->ntnNm}}<i class="flaticon-suntour-map"></i></li>
-                                    </ul>
+
+                <div class="review-content pattern relative">
+                    @if(isset($mdTourDetail))
+                        @foreach($mdTourDetail as $tourVw)
+                            <div class="row">
+                                <div class="col-md-5 mb-md-30 mb-xs-0">
+                                    <div class="review-total"><img src="{{$tourVw->imgUrl}}" data-at2x="{{$tourVw->imgUrl}}" alt>
+                                        <div class="review-total-content">
+                                            <h6>{{$tourVw->tourTit}}</h6>
+                                            <div class="stars-perc"><span style="width:{{$tourVw->tourRate}}%"></span></div><span>{{$tourVw->tourRateSeq}} reviews</span>
+                                            <ul class="icon">
+                                                <li>{{$tourVw->prvNm}}, {{$tourVw->ntnNm}}<i class="flaticon-suntour-map"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="review-marks clearfix mb-30">
+                                        <ul>
+                                            <li>
+                                                <label for="tourRate" class="control-label">Rate This</label>
+                                                <input id="tourRate" name="tourRate" class="rating rating-loading" data-min="0" data-max="5" data-step="1">
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="review-marks clearfix mb-30">
-                                <ul>
-                                    <li>
-                                        <label for="tourRate" class="control-label">Rate This</label>
-                                        <input id="tourRate" name="tourRate" class="rating rating-loading" data-min="0" data-max="5" data-step="1">
-                                    </li>
-                                </ul>
-                            </div>
+                            <form id="tour-review-form" class="form clearfix" action="" method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="feedback-form-success" class="review_server_response"></div>
+                                        {{ csrf_field() }}
+                                        <input name="_method" type="hidden" value="GET">
+                                        <input id="rateValue" name="rateValue" type="hidden" value="5" aria-required="true" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="hidden" id="tourID" name="tourID" value="{{$tourVw->tourId}}"  aria-required="true" required>
+                                        <input type="text" id="firstName" name="firstName" value="" size="40" placeholder="First Name" aria-required="true" class="form-row form-row-first" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" id="lastName" name="lastName" value="" size="40" placeholder="Last Name" aria-required="true" class="form-row form-row-first" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="email" id="email" name="email" value="" size="40" placeholder="Email" aria-required="true" class="form-row form-row-first" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="text" id="title" name="title" value="" size="40" placeholder="Title of your review" required aria-required="true" class="form-row form-row-last">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea name="content" id="content" cols="40" rows="4" placeholder="Message of your review" aria-invalid="false" required aria-required="true" class="mb-20"></textarea>
+                                        <input type="submit" value="Add a review" class="cws-button alt float-right">
+                                    </div>
+                                </div>
+                            </form>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-4 sidebar">
+                <aside class="sb-right pb-50-imp">
+                    <!-- widget post-->
+                    <div class="cws-widget">
+                        <div class="widget-post">
+                            <h2 class="widget-title alt">Tour Relative</h2>
+                            @if(isset($mdTourRelate))
+                                @foreach($mdTourRelate as $tr)
+                                <!-- item recent post-->
+                                    <div class="item-recent clearfix">
+                                        <div class="widget-post-media"><img src="{{$tr->imgTp =='R' ? $tr->imgUrl : url('/').$tr->imgUrl}}" data-at2x="{{$tr->imgTp =='R' ? substr($tr->imgUrl, 0, -4).'@2x'.substr($tr->imgUrl, -4, 4) : substr(url('/').$tr->imgUrl, 0, -4).'@2x'.substr(url('/').$tr->imgUrl, -4, 4)}}" alt="{{$tr->imgAlt}}"></div>
+                                        <h3 class="title"><a href="{{url('tour-detail/'.$tr->tourTxtLnk)}}">{{$tr->tourTit}}</a></h3>
+                                        <div class="date-recent">{{$tr->crtDt}}</div>
+                                    </div>
+                                    <!-- ! item recent post-->
+                                @endforeach
+                            @endif
                         </div>
                     </div>
-                    <form id="tour-review-form" class="form clearfix" action="" method="POST">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="feedback-form-success" class="review_server_response"></div>
-                                {{ csrf_field() }}
-                                <input name="_method" type="hidden" value="POST">
-                                <input id="rateValue" name="rateValue" type="hidden" value="5" aria-required="true" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="hidden" id="tourID" name="tourID" value="{{$tourVw->tourId}}"  aria-required="true" required>
-                                <input type="text" id="firstName" name="firstName" value="" size="40" placeholder="First Name" aria-required="true" class="form-row form-row-first" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="text" id="lastName" name="lastName" value="" size="40" placeholder="Last Name" aria-required="true" class="form-row form-row-first" required>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="email" id="email" name="email" value="" size="40" placeholder="Email" aria-required="true" class="form-row form-row-first" required>
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" id="title" name="title" value="" size="40" placeholder="Title of your review" required aria-required="true" class="form-row form-row-last">
-                            </div>
-                            <div class="col-md-12">
-                                <textarea name="content" id="content" cols="40" rows="4" placeholder="Message of your review" aria-invalid="false" required aria-required="true" class="mb-20"></textarea>
-                                <input type="submit" value="Add a review" class="cws-button alt float-right">
-                            </div>
-                        </div>
-                    </form>
-                @endforeach
-            @endif
+                    <!-- ! widget post-->
+                </aside>
+            </div>
         </div>
     </div>
-    <!-- ! review -->
 </section>

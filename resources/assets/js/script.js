@@ -994,19 +994,19 @@ if ($("#email-sub-form").length) {
 	/* validate the contact form fields */
 	$("#email-sub-form").each(function(){
 
-	$(this).validate(  /*feedback-form*/{
-		onkeyup: false,
-		onfocusout: false,
-		errorElement: 'p',
-		errorLabelContainer: $(this).parent().children(".alert.alert-danger").children(".message"),
-		rules:
+		$(this).validate(  /*feedback-form*/{
+			onkeyup: false,
+			onfocusout: false,
+			errorElement: 'p',
+			errorLabelContainer: $(this).parent().children(".alert.alert-danger").children(".message"),
+			rules:
 			{
 				email:{	required: true,	email: true	},
 			},
 			messages:
 			{
 				email:{	required: 'Please enter your email address',
-				email: 'Please enter a VALID email address'	},
+					email: 'Please enter a VALID email address'	},
 			},
 			invalidHandler: function()
 			{
@@ -1017,13 +1017,13 @@ if ($("#email-sub-form").length) {
 			{
 				$(form).parent().children(".alert.alert-danger").slideUp('fast');
 				var $form = $(form).ajaxSubmit();
-				submit_handler($form, $(form).parent().children(".email_server_response") );
+				email_submit_handler($form, $(form).parent().children(".email_server_response") );
 			}
 		});
 	})
 
 	/* Ajax, Server response */
-	var submit_handler =  function (form, wrapper){
+	var email_submit_handler =  function (form, wrapper){
 
 		var $wrapper = $(wrapper); //this class should be set in HTML code
 		$wrapper.css("display","block");
@@ -1053,7 +1053,7 @@ if ($("#email-sub-form").length) {
 	}
 
 	$('form.form.contact-form').on("click", function() {
-	$(this).find('p.error').remove();
+		$(this).find('p.error').remove();
 	})
 }
 
@@ -1092,14 +1092,13 @@ if ($("#tour-review-form").length) {
 			{
 				$(form).parent().children(".alert.alert-danger").slideUp('fast');
 				var $form = $(form).ajaxSubmit();
-				submit_handler($form, $(form).children(".review_server_response") );
+				tour_review_submit_handler($form, $(form).children().children().children(".review_server_response") );
 			}
 		});
 	})
 
 	/* Ajax, Server response */
-	var submit_handler =  function (form, wrapper){
-
+	var tour_review_submit_handler =  function (form, wrapper){
 		var $wrapper = $(wrapper); //this class should be set in HTML code
 		$wrapper.css("display","block");
 		var data = {
@@ -1113,7 +1112,8 @@ if ($("#tour-review-form").length) {
 			_token: $('meta[name="csrf-token"]').attr('content'),
 		};
 		// send data to server
-		$.post("tourReview", data, function(response) {
+		$.post("/tourReview", data, function(response) {
+		    console.log(response);
 			if(response.info == 'Success'){
 				$wrapper.addClass("message message-success").append('<div role="alert" class="alert alert-success alt alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"></button><i class="alert-icon flaticon-suntour-check"></i><strong>Success!</strong><br>' + response.Content + '</div>');
 				$wrapper.delay(3000).slideUp(300, function(){

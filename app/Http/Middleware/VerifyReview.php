@@ -44,7 +44,7 @@ class VerifyReview
         }
 
         if ($verify == false){
-            return response()->json(['info' => 'Fail', 'Content' =>  $fail ], 200);
+            return response()->json(['info' => 'Fail', 'Content' =>  $vrfArr ], 200);
         }else{
             return $next($request);
         }

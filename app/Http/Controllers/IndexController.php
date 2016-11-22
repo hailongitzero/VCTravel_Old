@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\App;
 
 class IndexController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
         $localCode = strtoupper(App::getLocale());
 
@@ -72,5 +75,21 @@ class IndexController extends Controller
         }else{
             return response()->json(['info' => 'Fail', 'Content' => $fail], 200);
         }
+    }
+
+    public function notFoundPage(){
+        $localCode = strtoupper(App::getLocale());
+
+        /* Load Model */
+        $headerModel = new Models\HeaderModel();
+
+        /* Init Data */
+        $headerData = $headerModel->index($localCode);
+
+        $indexData = array(
+            "headerData" => $headerData,
+        );
+
+        return view('404', $indexData);
     }
 }

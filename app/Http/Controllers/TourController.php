@@ -127,7 +127,7 @@ class TourController extends Controller
             "BK_QTY_KID" => $child,
             "BK_DPRT_DT" => $departDt,
             "BK_RTRN_DT" => $returnDt,
-            "BK_STS" => "P"
+            "BK_STS" => "B"
         );
 
         $result = $tourModel->tourBooking($insertArr);
@@ -191,12 +191,8 @@ class TourController extends Controller
             "COMMENT_CONTENT" => $content,
             "COMMENT_RATE" => $rate
         );
-        $rateArr = array(
-            "TOUR_RATE_TOT_SEQ" => 1,
-            "TOUR_RATE_TOT_STAR" => $rate,
-        );
 
-        $result = $tourModel->tourReview($insertArr, $rateArr, $id);
+        $result = $tourModel->tourReview($insertArr, $rate, $id);
 
         if( $result ){
             return response()->json(['info' => 'Success', 'Content' =>  $success ], 200);

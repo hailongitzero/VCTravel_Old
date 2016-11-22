@@ -16,6 +16,9 @@ Route::group(['middleware' => ['web']], function () {
 /* Index page route*/
 Route::get('', 'IndexController@index');
 
+/* Not found page route*/
+Route::get('404', 'IndexController@notFoundPage');
+
 /* About us page route*/
 Route::get('pages/{id}', 'PagesController@getPagesRedirect');
 
@@ -51,4 +54,39 @@ Route::post('/subsEmail', 'IndexController@regSubscribeEmail')->middleware('emai
 Route::post('tourBooking', 'TourController@tourBooking')->middleware('booking');
 
 /* Tour review */
-Route::post('tourReview', 'TourController@tourReview')->middleware('review');
+Route::post('/tourReview', 'TourController@tourReview')->middleware('review');
+
+/* admin page */
+
+//
+//Route::get('admin/login', function (){
+//    return view('admin.login');
+//})->middleware('admin', 'auth');
+//
+//Route::POST('admin/sigIn', 'admin\UserController@login');
+//
+//Route::get('admin/reg', function (){
+//    return view('admin.pages.register');
+//});
+//
+//Route::POST('admin/addUser', 'admin\UserController@userRegister');
+
+Route::get('admin', function (){
+    return view('admin.pages.dashboard');
+});
+
+Route::get('admin/tour-list', 'Admin\AdminTourController@getTourList');
+
+//Insert Tour
+Route::get('admin/tour-edit', 'Admin\AdminTourController@createTour');
+//Update tour
+Route::get('admin/tour-edit/{id}', 'Admin\AdminTourController@getTourDetail');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+//Edit tour
+Route::POST('admin/tourEditor', 'Admin\AdminTourController@tourEditor');
+//Update tour
+Route::POST('admin/tourUpdate', 'Admin\AdminTourController@tourUpdate');
